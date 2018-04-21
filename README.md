@@ -5,7 +5,7 @@
 $ git clone https://github.com/malusev998/Apache_VirtualHosts.git
 ```
 
-#Global Using
+# Global Using
 
 ## Setup script globaly
 ```bash
@@ -21,7 +21,7 @@ Using the script
 $ sudo virtualhost (create | delete) example.com
 ```
 
-#Local using
+# Local using
 ## Make script executable
 ```bash
 $  sudo chmod +x virtualhost.sh
