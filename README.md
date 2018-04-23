@@ -1,4 +1,5 @@
 # Virtual Hosts (Apache Server)
+> Simple Script for creating Apache VirtualHosts (with error checking)
 
 ## Installing
 ```bash
