@@ -32,5 +32,5 @@ Using the script
 ```bash
 $ sudo ./virtualhost.sh (create | delete) example.com
 ```
-
+## Plan to add powershell core script
 
