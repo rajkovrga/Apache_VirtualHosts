@@ -1,13 +1,11 @@
 package com.virtualhosts.apache;
 
 import com.virtualhosts.Config;
+import com.virtualhosts.OsType;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.net.Inet4Address;
+import java.io.*;
+import java.net.InetAddress;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NotDirectoryException;
 import java.util.Scanner;
@@ -17,17 +15,17 @@ import java.util.regex.Pattern;
 public class VirtualHost {
     private String hostName;
     private String serverName;
-    private Inet4Address address;
+    private InetAddress address;
     private String alias;
     private String publicFolder = "";
     private String documentRoot;
     private Boolean rewriteEngine = false;
-
+    private OsType Os = Config.getOs();
     //Constructor
     public VirtualHost(
                         String hostname,
                        String serverName,
-                       Inet4Address address,
+                       InetAddress address,
                        @Nullable String publicFolder,
                        @Nullable String alias,
                        @Nullable String documentRoot,
@@ -81,17 +79,29 @@ public class VirtualHost {
      * @throws FileAlreadyExistsException Throws an error if the config file exits
      * @throws IOException If it fails to create new config file, mainly because of root access
      */
-    private void addConf() throws  FileAlreadyExistsException, IOException {
-        File newSite = new File(Config.SITESAVAILABLE.concat(this.hostName));
-        if(newSite.isFile() || newSite.exists()) {
-            throw new FileAlreadyExistsException("Config file exits");
+    private void addConf() throws  FileAlreadyExistsException, IOException, NullPointerException {
+        File newSite = null;
+        FileWriter writer;
+        if(this.Os == OsType.Linux) {
+            newSite = new File(Config.SITESAVAILABLE.concat(this.hostName));
+            if (newSite.isFile() || newSite.exists()) {
+                throw new FileAlreadyExistsException("Config file exits");
+            }
+            if (newSite.createNewFile()) {
+                System.out.println("File created");
+            } else {
+                System.out.println("Error has accured");
+                return;
+            }
+        } else if(this.Os == OsType.Windows) {
+            newSite = new File(Config.SITESAVAILABLE);
+            if(!newSite.exists())
+                throw new FileNotFoundException();
         }
-        if(newSite.createNewFile()) {
-            System.out.println("File created");
-        } else {
-            System.out.println("Error has accured");
+        if(newSite == null) {
+            throw new NullPointerException();
         }
-        FileWriter writer = new FileWriter(newSite);
+        writer = new FileWriter(newSite);
         writer.write(this.toString());
         writer.close();
     }
@@ -114,13 +124,13 @@ public class VirtualHost {
 
     /**
      * Public method for uniting all other methods
-     * @throws NotDirectoryException If the apache is not installed throws "Apache is not installed"
      */
-    public void createNewVirtualHost() throws NotDirectoryException {
+    public void createNewVirtualHost() {
         try {
-            if(apacheExits()) {
-                throw new NotDirectoryException("Apache is not installed");
-            }
+            if(Config.getOs() == OsType.Linux)
+                if(apacheExits()) {
+                    throw new NotDirectoryException("Apache is not installed");
+                }
             addConf();
             writeToHostsFile();
             createDirectoryForVirtualHost();
@@ -135,12 +145,7 @@ public class VirtualHost {
      * Writes to system hosts file
      */
     private void writeToHostsFile() {
-        if(apacheExits()) {
-            System.out.println("Apache2 is not installed");
-            return;
-        }
-        String hostsFileLocation = "/etc/hosts";
-        File hosts = new File(hostsFileLocation);
+        File hosts = new File(Config.HOSTS);
         try {
             if(hostExits(hosts)){
                 System.out.println("Host already exists");
@@ -151,7 +156,6 @@ public class VirtualHost {
                     .append(this.address.toString())
                     .append("\t")
                     .append(this.serverName);
-//                    .append('\n');
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -160,13 +164,14 @@ public class VirtualHost {
 
     /**
      * Checks for the apache folder, to determent if the apache is installed or not
+     * This method works only in LINUX !!!
      * @return boolean
      */
     private boolean apacheExits() {
         return !new File("/etc/apache2").isDirectory();
     }
 
-    //Implement apache virtual host sytax
+    //Implement apache virtual host syntax
     @Override
     public String toString() {
         return "";
