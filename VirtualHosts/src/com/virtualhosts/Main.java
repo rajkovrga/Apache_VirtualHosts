@@ -18,7 +18,8 @@ public class Main {
         String allias = null;
         Boolean rewriteEngine = false;
         for (var i = 0; i < args.length; i++)
-            switch (args[i].toLowerCase()) {
+            switch (args[i].toLowerCase())
+            {
                 case "--hostname":
                     hostname = args[i + 1];
                     break;

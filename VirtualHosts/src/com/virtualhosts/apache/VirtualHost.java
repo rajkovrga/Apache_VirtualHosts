@@ -1,6 +1,7 @@
 package com.virtualhosts.apache;
 
 import com.virtualhosts.Config;
+import com.virtualhosts.Hosts;
 import com.virtualhosts.OsType;
 import org.jetbrains.annotations.Nullable;
 
@@ -8,14 +9,12 @@ import java.io.*;
 import java.net.InetAddress;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NotDirectoryException;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class VirtualHost {
     private String hostName;
     private String serverName;
     private InetAddress address;
+    private Hosts hosts;
     private String alias;
     private String publicFolder = "";
     private String documentRoot;
@@ -33,8 +32,9 @@ public class VirtualHost {
     ) {
         this.hostName = hostname;
         this.alias = alias;
-        this.serverName = serverName;
         this.address = address;
+        this.serverName = serverName;
+        this.hosts = new Hosts(address, serverName);
         if(publicFolder != null) {
             this.publicFolder = publicFolder;
         }
@@ -49,30 +49,6 @@ public class VirtualHost {
         this.hostName = serverName.split("\\.")[0];
     }
 
-    /**
-     * Checks if the host exits
-     * @param hostsFile Hosts file in /etc/
-     * @return returns whether the host exits or not
-     * @throws IOException if the file is not found
-     */
-   private boolean hostExits(File hostsFile) throws IOException {
-        FileReader reader = new FileReader(hostsFile);
-        //Regex for matching the line in the hosts file
-        Pattern regex = Pattern.compile("\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t | \\s+)(.*+)\\n?");
-        Scanner scanner = new Scanner(reader);
-        Matcher match;
-        String line;
-        while(scanner.hasNextLine()) {
-            line = scanner.nextLine();
-            match = regex.matcher(line);
-            if(match.group(1).equals(this.address.toString()) && match.group(3).equals(this.serverName)) {
-                reader.close();
-                return true;
-            }
-        }
-        reader.close();
-        return false;
-    }
 
     /**
      * Adds the configuration to apache for the given parameters
@@ -132,7 +108,7 @@ public class VirtualHost {
                     throw new NotDirectoryException("Apache is not installed");
                 }
             addConf();
-            writeToHostsFile();
+            this.hosts.write();
             createDirectoryForVirtualHost();
         } catch (FileAlreadyExistsException e) {
             e.getMessage();
@@ -141,26 +117,7 @@ public class VirtualHost {
         }
     }
 
-    /**
-     * Writes to system hosts file
-     */
-    private void writeToHostsFile() {
-        File hosts = new File(Config.HOSTS);
-        try {
-            if(hostExits(hosts)){
-                System.out.println("Host already exists");
-                return;
-            }
-            FileWriter writer = new FileWriter(hosts);
-            writer.append("\n")
-                    .append(this.address.toString())
-                    .append("\t")
-                    .append(this.serverName);
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     /**
      * Checks for the apache folder, to determent if the apache is installed or not
