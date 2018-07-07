@@ -15,8 +15,11 @@ public class Main {
         InetAddress address = null;
         String publicFolder = null;
         String documentRoot = null;
-        String allias = null;
+        String alias = null;
         Boolean rewriteEngine = false;
+        setDefaults(type);
+
+        // TODO - Refactor this mess
         for (var i = 0; i < args.length; i++)
             switch (args[i].toLowerCase())
             {
@@ -28,11 +31,15 @@ public class Main {
                     break;
                 case "--ip-address":
                     String[] strBytes;
-                    if(Pattern.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}", args[i+1])) {
+                    if(Pattern.matches(
+                            "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
+                            args[i+1]
+                    ))
+                    {
                         strBytes = args[i + 1].split("\\.");
                     }
                     else
-                        throw new Exception("Ip address is not in corret format");
+                        throw new Exception("Ip address is not in correct format");
                     byte[] bytes = new byte[4];
                     for ( int j = 0; j < strBytes.length; j++) {
                         bytes[j] = Byte.parseByte(strBytes[j]);
@@ -46,7 +53,7 @@ public class Main {
                     documentRoot = args[ i + 1];
                     break;
                 case "--alias":
-                    allias = args[i+1];
+                    alias = args[i+1];
                     break;
                 case "--rewrite-engine":
                     rewriteEngine = Boolean.getBoolean(args[i + 1]);
@@ -59,7 +66,17 @@ public class Main {
                     break;
             }
         assert type != null;
-        switch (type) {
+
+        if (hostname == null || serverName == null || address == null){
+            System.out.println("Hostname or ServerName or IpAddress is not supplied");
+            return;
+        }
+        VirtualHost vh = new VirtualHost(hostname, serverName, address, publicFolder, alias, documentRoot, rewriteEngine);
+        vh.createNewVirtualHost();
+    }
+    static void setDefaults(OsType type) {
+        switch (type)
+        {
             case Windows:
                 File file = new File("C:\\xampp\\htdocs");
                 File sites = new File("C:\\xampp\\apache\\conf\\extra\\httpd-vhosts.conf");
@@ -82,13 +99,6 @@ public class Main {
                 return;
             default:
                 System.out.println("This type of operating system is not supported");
-                return;
         }
-        if (hostname == null || serverName == null || address == null){
-            System.out.println("Hostname or ServerName or IpAddress is not supplied");
-            return;
-        }
-        VirtualHost vh = new VirtualHost(hostname, serverName, address, publicFolder, allias, documentRoot, rewriteEngine);
-        vh.createNewVirtualHost();
     }
 }

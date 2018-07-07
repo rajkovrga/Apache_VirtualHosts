@@ -36,9 +36,10 @@ public class Hosts {
      */
     public Map<String,InetAddress> read() throws FileNotFoundException {
         var map = new HashMap<String, InetAddress>();
-//        var reader = new FileReader(this.file);
         Scanner scanner = new Scanner(this.file);
-        Pattern regex = Pattern.compile("\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t | \\s+)(.*+)\\n?");
+        Pattern regex = Pattern.compile(
+                "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t | \\s+)(.*+)\\n?"
+        );
         Matcher matcher;
         byte[] bytes = new byte[4];
         while(scanner.hasNextLine()) {
