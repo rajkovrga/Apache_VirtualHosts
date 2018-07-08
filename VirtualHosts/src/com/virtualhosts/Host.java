@@ -33,7 +33,7 @@ public class Host {
     public boolean hostExits() throws Exception {
         return read().containsKey(this.serverName) && read().containsValue(this.address);
     }
-
+    //localhost = 127.0.0.1
     /**
      * Gets the list of hosts,
      * Abstraction for read method
@@ -55,6 +55,7 @@ public class Host {
         }
         return null;
     }
+
 
     /**
      * Reading the hosts file into Map
@@ -148,33 +149,51 @@ public class Host {
         throw new HostNotFoundException();
     }
 
-    //TODO - Find some good ideas to solve problems for rewriting updating and deleting
-    //TODO - Add params to rewrite
-    //TODO - More checking
     /**
      * Rewriting Hosts file after update or delete
      *
-     * TODO - Need implementing
      */
-    private void rewrite() {
+    private void rewrite() throws Exception {
+        StringBuilder builder = new StringBuilder();
+        Scanner scanner = new Scanner(file);
+        String address = this.address.toString().replace("/", "");
+        String line;
+        Matcher matcher;
+        Pattern regex = Pattern.compile("\\n?" + address + "[\\t|\\s]+" +this.serverName + "\\n?");
+        while(scanner.hasNextLine()) {
+            line = scanner.nextLine();
+            matcher = regex.matcher(line);
+            if(!matcher.matches())  {
+                builder.append(line);
+            }
+        }
 
+        if(!file.canWrite())  {
+            throw new Exception("");
+        }
+        try {
+            FileWriter writer = new FileWriter(file);
+            writer.write(builder.toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Updates existing host
      *
-     * TODO - Needs implementing
      */
-    public void update() {
-
+    public void update(Host newHost) throws Exception {
+        rewrite();
+        newHost.write();
     }
 
     /**
      * Deletes existing host
      *
-     *  TODO - Needs implementing
      */
-    public void delete() {
-
+    public void delete() throws Exception {
+        rewrite();
     }
     /**
      * Overriding to string method for better debugging
