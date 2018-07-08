@@ -1,7 +1,7 @@
 package com.virtualhosts.apache;
 
 import com.virtualhosts.Config;
-import com.virtualhosts.Hosts;
+import com.virtualhosts.Host;
 import com.virtualhosts.OsType;
 import org.jetbrains.annotations.Nullable;
 
@@ -14,7 +14,7 @@ public class VirtualHost {
     private String hostName;
     private String serverName;
     private InetAddress address;
-    private Hosts hosts;
+    private Host hosts;
     private String alias;
     private String publicFolder = "";
     private String documentRoot;
@@ -34,7 +34,7 @@ public class VirtualHost {
         this.alias = alias;
         this.address = address;
         this.serverName = serverName;
-        this.hosts = new Hosts(address, serverName);
+        this.hosts = new Host(address, serverName);
         if(publicFolder != null) {
             this.publicFolder = publicFolder;
         }
@@ -108,7 +108,12 @@ public class VirtualHost {
                     throw new NotDirectoryException("Apache is not installed");
                 }
             addConf();
-            this.hosts.write();
+            try {
+                this.hosts.write();
+            } catch (Exception e) {
+                e.printStackTrace();
+                e.getMessage();
+            }
             createDirectoryForVirtualHost();
         } catch (FileAlreadyExistsException e) {
             e.getMessage();

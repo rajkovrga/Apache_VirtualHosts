@@ -1,14 +1,14 @@
 package com.virtualhosts;
 
 
-import com.virtualhosts.apache.VirtualHost;
+import com.virtualhosts.apache.HostNotFoundException;
 
 import java.io.File;
 import java.net.InetAddress;
-import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        //TODO - more testing
         OsType type = Config.getOs();
         String hostname = null;
         String serverName = null;
@@ -19,62 +19,78 @@ public class Main {
         Boolean rewriteEngine = false;
         setDefaults(type);
 
-        // TODO - Refactor this mess
-        for (var i = 0; i < args.length; i++)
-            switch (args[i].toLowerCase())
-            {
-                case "--hostname":
-                    hostname = args[i + 1];
-                    break;
-                case "--server-name":
-                    serverName = args[i + 1];
-                    break;
-                case "--ip-address":
-                    String[] strBytes;
-                    if(Pattern.matches(
-                            "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
-                            args[i+1]
-                    ))
-                    {
-                        strBytes = args[i + 1].split("\\.");
-                    }
-                    else
-                        throw new Exception("Ip address is not in correct format");
-                    byte[] bytes = new byte[4];
-                    for ( int j = 0; j < strBytes.length; j++) {
-                        bytes[j] = Byte.parseByte(strBytes[j]);
-                    }
-                    address = InetAddress.getByAddress(bytes);
-                    break;
-                case "--public-folder":
-                    publicFolder = args[i + 1];
-                    break;
-                case "--document-root":
-                    documentRoot = args[ i + 1];
-                    break;
-                case "--alias":
-                    alias = args[i+1];
-                    break;
-                case "--rewrite-engine":
-                    rewriteEngine = Boolean.getBoolean(args[i + 1]);
-                    break;
-                case "--sites-available":
-                    Config.SITESAVAILABLE = args[i + 1];
-                    break;
-                case "--sites-dest":
-                    Config.SITES = args[i + 1];
-                    break;
-            }
-        assert type != null;
-
-        if (hostname == null || serverName == null || address == null){
-            System.out.println("Hostname or ServerName or IpAddress is not supplied");
-            return;
+        var read = Host.read();
+        Host host = null;
+        try {
+            host = Host.get("dusanmalusev.com");
+        } catch (HostNotFoundException e) {
+            e.printStackTrace();
         }
-        VirtualHost vh = new VirtualHost(hostname, serverName, address, publicFolder, alias, documentRoot, rewriteEngine);
-        vh.createNewVirtualHost();
+        try {
+            Host.getAllHosts().forEach((x) -> System.out.println(x.toString()));
+        } catch(NullPointerException e) {
+            e.printStackTrace();
+        }
+        assert host != null;
+        System.out.println(host.toString());
+
+
+        // TODO - Refactor this mess
+//        for (var i = 0; i < args.length; i++)
+//            switch (args[i].toLowerCase())
+//            {
+//                case "--hostname":
+//                    hostname = args[i + 1];
+//                    break;
+//                case "--server-name":
+//                    serverName = args[i + 1];
+//                    break;
+//                case "--ip-address":
+//                    String[] strBytes;
+//                    if(Pattern.matches(
+//                            "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
+//                            args[i+1]
+//                    ))
+//                    {
+//                        strBytes = args[i + 1].split("\\.");
+//                    }
+//                    else
+//                        throw new Exception("Ip address is not in correct format");
+//                    byte[] bytes = new byte[4];
+//                    for ( int j = 0; j < strBytes.length; j++) {
+//                        bytes[j] = Byte.parseByte(strBytes[j]);
+//                    }
+//                    address = InetAddress.getByAddress(bytes);
+//                    break;
+//                case "--public-folder":
+//                    publicFolder = args[i + 1];
+//                    break;
+//                case "--document-root":
+//                    documentRoot = args[ i + 1];
+//                    break;
+//                case "--alias":
+//                    alias = args[i+1];
+//                    break;
+//                case "--rewrite-engine":
+//                    rewriteEngine = Boolean.getBoolean(args[i + 1]);
+//                    break;
+//                case "--sites-available":
+//                    Config.SITESAVAILABLE = args[i + 1];
+//                    break;
+//                case "--sites-dest":
+//                    Config.SITES = args[i + 1];
+//                    break;
+//            }
+//        assert type != null;
+//
+//        if (hostname == null || serverName == null || address == null){
+//            System.out.println("Hostname or ServerName or IpAddress is not supplied");
+//            return;
+//        }
+//        VirtualHost vh = new VirtualHost(hostname, serverName, address, publicFolder, alias, documentRoot, rewriteEngine);
+//        vh.createNewVirtualHost();
     }
-    static void setDefaults(OsType type) {
+    private static void setDefaults(OsType type) {
         switch (type)
         {
             case Windows:
