@@ -23,23 +23,37 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            <state relative-caret-position="320">
+              <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#setDefaults#0;class#Main#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Host.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1872">
-              <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+            <state relative-caret-position="140">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VirtualHost.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1721#1722#0" expanded="true" />
+                <element signature="e#1740#1741#0" expanded="true" />
+                <element signature="e#5050#5051#0" expanded="true" />
+                <element signature="e#5112#5113#0" expanded="true" />
+                <element signature="e#5201#5202#0" expanded="true" />
+                <element signature="e#5226#5227#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,10 +75,10 @@
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Config.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/OsType.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Hosts.java" />
-        <option value="$PROJECT_DIR$/src/com/virtualhosts/Main.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/HostNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java" />
+        <option value="$PROJECT_DIR$/src/com/virtualhosts/Main.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Host.java" />
+        <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java" />
       </list>
     </option>
   </component>
@@ -84,36 +98,22 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="132" />
-    <option name="y" value="47" />
-    <option name="width" value="1401" />
-    <option name="height" value="833" />
+    <option name="x" value="130" />
+    <option name="y" value="45" />
+    <option name="width" value="1403" />
+    <option name="height" value="835" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
               <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
-              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-              <item name="production" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
@@ -126,10 +126,20 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
+              <item name="apache" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,11 +241,13 @@
       <workItem from="1530997823136" duration="6224000" />
       <workItem from="1531006300340" duration="6187000" />
       <workItem from="1531052032884" duration="1967000" />
+      <workItem from="1531136693406" duration="1222000" />
+      <workItem from="1531145999101" duration="4478000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31390000" />
+    <option name="totallyTimeSpent" value="37090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -247,14 +259,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="-7" y="-7" width="1753" height="954" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3292683" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3292683" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
-      <window_info anchor="bottom" id="Regex Tester" order="8" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="8" weight="0.32952252" />
@@ -264,7 +276,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3292683" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17866324" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18230088" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -280,6 +292,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32805756" />
+      <window_info anchor="bottom" id="Regex Tester" order="8" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -328,11 +341,58 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3880">
+          <caret line="194" column="6" lean-forward="true" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="768">
           <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setDefaults#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -343,6 +403,10 @@
           <caret line="184" column="34" selection-start-line="184" selection-start-column="34" selection-end-line="184" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -363,7 +427,6 @@
           <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setDefaults#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -374,7 +437,6 @@
           <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setDefaults#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -402,7 +464,6 @@
           <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setDefaults#0;class#Main#0" />
           </folding>
         </state>
       </provider>
@@ -438,24 +499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/net/InetAddress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-92">
-          <caret line="1562" lean-forward="true" selection-start-line="1562" selection-end-line="1562" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/OsType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" selection-start-column="25" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -491,10 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-7">
           <caret line="1998" column="51" selection-start-line="1998" selection-start-column="51" selection-end-line="1998" selection-end-column="51" />
-          <folding>
-            <element signature="e#80867#80868#0" expanded="true" />
-            <element signature="e#80918#80919#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -502,33 +545,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
           <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-            <element signature="e#363#364#0" expanded="true" />
-            <element signature="e#398#399#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="114" column="31" lean-forward="true" selection-start-line="114" selection-start-column="31" selection-end-line="114" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setDefaults#0;class#Main#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -539,12 +555,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/InputStreamReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2324">
+          <caret line="167" column="25" lean-forward="true" selection-start-line="167" selection-start-column="25" selection-end-line="167" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/net/InetAddress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104">
+          <caret line="1599" column="30" selection-start-line="1599" selection-start-column="30" selection-end-line="1599" selection-end-column="30" />
+          <folding>
+            <element signature="e#52314#52315#0" expanded="true" />
+            <element signature="e#52359#52360#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1872">
-          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+        <state relative-caret-position="360">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#1027#1028#0" expanded="true" />
+            <element signature="e#1093#1094#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+            <element signature="e#1108#1109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="25" column="37" selection-start-line="25" selection-start-column="37" selection-end-line="25" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="112" column="5" lean-forward="true" selection-start-line="112" selection-start-column="5" selection-end-line="112" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1721#1722#0" expanded="true" />
+            <element signature="e#1740#1741#0" expanded="true" />
+            <element signature="e#5050#5051#0" expanded="true" />
+            <element signature="e#5112#5113#0" expanded="true" />
+            <element signature="e#5201#5202#0" expanded="true" />
+            <element signature="e#5226#5227#0" expanded="true" />
           </folding>
         </state>
       </provider>

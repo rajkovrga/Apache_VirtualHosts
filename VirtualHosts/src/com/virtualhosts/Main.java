@@ -23,6 +23,7 @@ public class Main {
         Host host = null;
         try {
             host = Host.get("dusanmalusev.com");
+//            host.update(new Host())
         } catch (HostNotFoundException e) {
             e.printStackTrace();
         }

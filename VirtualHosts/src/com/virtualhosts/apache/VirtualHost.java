@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NotDirectoryException;
 
@@ -22,17 +23,20 @@ public class VirtualHost {
     private OsType Os = Config.getOs();
     //Constructor
     public VirtualHost(
-                        String hostname,
                        String serverName,
-                       InetAddress address,
+                       @Nullable InetAddress address,
                        @Nullable String publicFolder,
                        @Nullable String alias,
                        @Nullable String documentRoot,
                        @Nullable Boolean rewriteEngine
     ) {
-        this.hostName = hostname;
+        this.hostName = serverName.split("\\.")[0];
         this.alias = alias;
-        this.address = address;
+        if(address == null) {
+            this.address = InetAddress.getLoopbackAddress();
+        } else {
+            this.address = address;
+        }
         this.serverName = serverName;
         this.hosts = new Host(address, serverName);
         if(publicFolder != null) {
@@ -41,14 +45,24 @@ public class VirtualHost {
         if (documentRoot != null) {
             this.documentRoot = documentRoot;
         } else {
-            this.documentRoot = "/var/www";
+            this.documentRoot = Config.SITES + this.hostName;
         }
         if(rewriteEngine != null) {
             this.rewriteEngine = rewriteEngine;
         }
-        this.hostName = serverName.split("\\.")[0];
     }
-
+    public VirtualHost(String serverName) {
+        this(serverName, null, null, null, null, false);
+    }
+    public VirtualHost(String serverName, byte[] address) throws UnknownHostException {
+        this(serverName, InetAddress.getByAddress(address), null, null, null,false);
+    }
+    public VirtualHost(String serverName, byte[] address, String publicFolder) throws UnknownHostException {
+        this(serverName, InetAddress.getByAddress(address), publicFolder, null, null,false);
+    }
+    public VirtualHost(String serverName, byte[] address, String publicFolder, String documentRoot) throws UnknownHostException {
+        this(serverName, InetAddress.getByAddress(address), publicFolder, null, documentRoot,false);
+    }
 
     /**
      * Adds the configuration to apache for the given parameters
@@ -89,7 +103,7 @@ public class VirtualHost {
     private void createDirectoryForVirtualHost() throws FileAlreadyExistsException {
         File site = new File(Config.SITES.concat(hostName));
         if(site.isDirectory()) {
-            throw new FileAlreadyExistsException("Direcotory already exits");
+            throw new FileAlreadyExistsException("Directory already exits");
         }
         if(site.mkdir()) {
             System.out.println("Directory created");

@@ -13,11 +13,32 @@ public class Host {
     private InetAddress address;
     private String serverName;
     private static File file = new File(Config.HOSTS);
+    private static String[] content;
+
+
+
+    //Constructors
     public Host(InetAddress address, String serverName) {
         this.address = address;
         this.serverName = serverName;
+        try {
+            content = readFile();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
+    public Host(byte[] address, String serverName) throws UnknownHostException {
+        this(InetAddress.getByAddress(address), serverName);
+    }
+
+    public Host(String hostname, String serverName) throws UnknownHostException {
+        this(InetAddress.getAllByName(hostname)[0], serverName);
+    }
+
+    public Host(String serverName) {
+        this(InetAddress.getLoopbackAddress(), serverName);
+    }
     /**
      * Getter for this.file
      * @return Hosts file
@@ -25,15 +46,16 @@ public class Host {
     public static File getFile() {
         return Host.file;
     }
+
     /**
      * Checks if the host exits
      * @return returns whether the host exits or not
-     * @throws IOException if the file is not found
      */
-    public boolean hostExits() throws Exception {
+    public boolean hostExits(){
         return read().containsKey(this.serverName) && read().containsValue(this.address);
     }
-    //localhost = 127.0.0.1
+
+
     /**
      * Gets the list of hosts,
      * Abstraction for read method
@@ -41,14 +63,12 @@ public class Host {
      */
     public static List<Host> getAllHosts() {
         try {
-            var read = read();
+            var read = Host.read();
             List<Host> list = new ArrayList<>(5);
             for(var key : read.keySet()) {
                 list.add(new Host(read.get(key), key));
             }
             return list;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
@@ -57,45 +77,6 @@ public class Host {
     }
 
 
-    /**
-     * Reading the hosts file into Map
-     * @return Map
-     * @throws FileNotFoundException throws this if the hosts file doesn't exit
-     */
-    public static Map<String,InetAddress> read() throws Exception {
-        //Check if the file is readable
-        if(!file.canRead()) {
-            throw new Exception("File is not readable, try running it as Administrator/Root");
-        }
-        var map = new HashMap<String, InetAddress>();
-
-        Scanner scanner = new Scanner(Host.getFile());
-        String pattern =  "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t+|\\s*)(.*)\\n?";
-        Pattern regex = Pattern.compile(pattern);
-        Matcher matcher;
-        byte[] bytes = new byte[4];
-        while(scanner.hasNextLine()) {
-            matcher = regex.matcher(scanner.nextLine());
-            //Checks if the line matches,
-            // if it doesn't continues to the next line
-            if(!matcher.matches()) continue;
-
-            //Ip Address group
-            var ipStr = matcher.group(1);
-
-            //Splits the line to String[]
-            String[] ip = ipStr.split("\\.");
-            for(int i = 0; i < ip.length; i++) {
-                bytes[i] = Byte.parseByte(ip[i]);
-            }
-            try {
-                map.put(matcher.group(3), InetAddress.getByAddress(bytes));
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            }
-        }
-        return map;
-    }
 
     /**
      * Writes to system hosts file
@@ -130,6 +111,8 @@ public class Host {
      * @param hostName domain
      * @return new instance of Hosts class
      * @throws HostNotFoundException if the hosts isn't found
+     *
+     * TODO - Check this method
      */
     public static Host get(String hostName) throws HostNotFoundException {
         try {
@@ -139,14 +122,57 @@ public class Host {
                 var address = read.get(hostName);
                 return new Host(address, hostName);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage());
         }
         throw new HostNotFoundException();
+    }
+
+    private String[] readFile() throws Exception {
+        ArrayList<String> lines = new ArrayList<>(20);
+        if(!file.canRead()) {
+            throw new Exception("File is not readable, try running it as Administrator/Root");
+        }
+        String line;
+        FileReader fileReader = new FileReader(file);
+        BufferedReader reader = new BufferedReader(fileReader);
+        while((line = reader.readLine())!= null) {
+            lines.add(line);
+        }
+
+        //Cleaning up
+        reader.close();
+        fileReader.close();
+        lines.trimToSize();
+        return (String[])lines.toArray();
+    }
+
+    /**
+     * Reading the hosts file into Map
+     * @return Map
+     */
+    public static Map<String,InetAddress> read(){
+        var map = new HashMap<String, InetAddress>();
+        String pattern =  "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t+|\\s*)(.*)\\n?";
+        Pattern regex = Pattern.compile(pattern);
+        Matcher matcher;
+        byte[] bytes = new byte[4];
+        for(var line : content) {
+            matcher = regex.matcher(line);
+            if(!matcher.matches()) continue;
+            var ipStr = matcher.group(1);
+            String[] ip = ipStr.split("\\.");
+            for(int i = 0; i < ip.length; i++) {
+                bytes[i] = Byte.parseByte(ip[i]);
+            }
+            try {
+                map.put(matcher.group(3), InetAddress.getByAddress(bytes));
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+        }
+        return map;
     }
 
     /**
@@ -155,21 +181,17 @@ public class Host {
      */
     private void rewrite() throws Exception {
         StringBuilder builder = new StringBuilder();
-        Scanner scanner = new Scanner(file);
         String address = this.address.toString().replace("/", "");
-        String line;
         Matcher matcher;
-        Pattern regex = Pattern.compile("\\n?" + address + "[\\t|\\s]+" +this.serverName + "\\n?");
-        while(scanner.hasNextLine()) {
-            line = scanner.nextLine();
+        Pattern regex = Pattern.compile("\\n?" + address + "[\\t|\\s]+" + this.serverName + "\\n?");
+        for(var line : content) {
             matcher = regex.matcher(line);
             if(!matcher.matches())  {
                 builder.append(line);
             }
         }
-
         if(!file.canWrite())  {
-            throw new Exception("");
+            throw new Exception("File is not writable");
         }
         try {
             FileWriter writer = new FileWriter(file);
