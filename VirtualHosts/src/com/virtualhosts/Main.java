@@ -1,8 +1,6 @@
 package com.virtualhosts;
 
 
-import com.virtualhosts.apache.HostNotFoundException;
-
 import java.io.File;
 import java.net.InetAddress;
 
@@ -19,21 +17,23 @@ public class Main {
         Boolean rewriteEngine = false;
         setDefaults(type);
 
-        var read = Host.read();
-        Host host = null;
-        try {
-            host = Host.get("dusanmalusev.com");
+        Host host = new Host(new byte[] { 127,0,0,1},"dusan.com");
+        host.write();
+//        var read = Host.read();
+//        Host host = null;
+//        try {
+//            host = Host.get("dusanmalusev.com");
 //            host.update(new Host())
-        } catch (HostNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            Host.getAllHosts().forEach((x) -> System.out.println(x.toString()));
-        } catch(NullPointerException e) {
-            e.printStackTrace();
-        }
-        assert host != null;
-        System.out.println(host.toString());
+//        } catch (HostNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            Host.getAllHosts().forEach((x) -> System.out.println(x.toString()));
+//        } catch(NullPointerException e) {
+//            e.printStackTrace();
+//        }
+//        assert host != null;
+//        System.out.println(host.toString());
 
 
         // TODO - Refactor this mess

@@ -11,17 +11,69 @@ import java.net.UnknownHostException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NotDirectoryException;
 
+/**
+ * Class for manipulating Apache VirtualHosts
+ * @author Dusan Malusev
+ * @version 1.0
+ */
 public class VirtualHost {
+    /**
+     * Folder name
+     */
     private String hostName;
+    /**
+     * Domain
+     *
+     * eg. example.com
+     */
     private String serverName;
+    /**
+     * Ip Address of the website
+     *
+     * eg. 127.0.0.1
+     */
     private InetAddress address;
+    /**
+     * Reference to the hosts file for further manipulation
+     */
     private Host hosts;
+    /**
+     * Alias of the website
+     *
+     * eg. www.example.com
+     */
     private String alias;
+    /**
+     * Folder from where site is served
+     *
+     *  eg. /path/to/the/folder/public
+     */
     private String publicFolder = "";
+    /**
+     *
+     */
     private String documentRoot;
+    /**
+     * Apache Rewrite Engine
+     *
+     * default - false
+     */
     private Boolean rewriteEngine = false;
+    /**
+     * Current operating system
+     */
     private OsType Os = Config.getOs();
-    //Constructor
+
+
+    /**
+     * Default constructor
+     * @param serverName Domain name
+     * @param address Ip Address
+     * @param publicFolder Public folder from where the content will be served
+     * @param alias Alias for the web-site - usually www.example.com
+     * @param documentRoot Document root
+     * @param rewriteEngine Initially set RewriteEngine off -Default false
+     */
     public VirtualHost(
                        String serverName,
                        @Nullable InetAddress address,
@@ -51,6 +103,8 @@ public class VirtualHost {
             this.rewriteEngine = rewriteEngine;
         }
     }
+
+
     public VirtualHost(String serverName) {
         this(serverName, null, null, null, null, false);
     }

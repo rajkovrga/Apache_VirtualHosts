@@ -9,36 +9,79 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/**
+ * Class for manipulating System Hosts file
+ * @author Dusan Malusev
+ * @version 1.0
+ */
 public class Host {
+
+    /**
+     * Reference address
+     */
     private InetAddress address;
+
+    /**
+     * Actual domain name
+     */
     private String serverName;
-    private static File file = new File(Config.HOSTS);
-    private static String[] content;
 
+    /**
+     *  System Hosts file
+     */
+    private static final File file = new File(Config.HOSTS);
 
+    /**
+     * Content of the HOSTS file
+     */
+    private static List<String> content;
 
-    //Constructors
+    /**
+     * Primary constructor
+     * @param address Reference address
+     * @param serverName Domain name
+     */
     public Host(InetAddress address, String serverName) {
         this.address = address;
         this.serverName = serverName;
         try {
             content = readFile();
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
+    /**
+     * Gets ip address by the bytes given
+     * Constructor overload
+     * @param address IP address in bytes
+     * @param serverName Domain name
+     * @throws UnknownHostException This Exception is thrown when the domain name is not found
+     */
     public Host(byte[] address, String serverName) throws UnknownHostException {
         this(InetAddress.getByAddress(address), serverName);
     }
 
+    /**
+     *
+     * @param hostname Searches the IP address by the given hostname
+     * @param serverName Domain name
+     * @throws UnknownHostException This Exception is thrown when the domain name is not found
+     */
     public Host(String hostname, String serverName) throws UnknownHostException {
         this(InetAddress.getAllByName(hostname)[0], serverName);
     }
 
+    /**
+     * Overloaded constructor
+     * Address = 127.0.0.1
+     * @param serverName Domain name
+     */
     public Host(String serverName) {
         this(InetAddress.getLoopbackAddress(), serverName);
     }
+
     /**
      * Getter for this.file
      * @return Hosts file
@@ -49,6 +92,7 @@ public class Host {
 
     /**
      * Checks if the host exits
+     *
      * @return returns whether the host exits or not
      */
     public boolean hostExits(){
@@ -70,7 +114,6 @@ public class Host {
             }
             return list;
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         return null;
@@ -80,7 +123,7 @@ public class Host {
 
     /**
      * Writes to system hosts file
-     * TODO - Check this method
+     * @throws Exception This exception is thrown when user doesn't have permission to write to file
      */
     public void write() throws Exception {
         try {
@@ -102,7 +145,7 @@ public class Host {
                     .append(this.serverName);
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -112,7 +155,6 @@ public class Host {
      * @return new instance of Hosts class
      * @throws HostNotFoundException if the hosts isn't found
      *
-     * TODO - Check this method
      */
     public static Host get(String hostName) throws HostNotFoundException {
         try {
@@ -123,13 +165,17 @@ public class Host {
                 return new Host(address, hostName);
             }
         } catch (Exception e) {
-            e.printStackTrace();
             System.out.println(e.getMessage());
         }
         throw new HostNotFoundException();
     }
 
-    private String[] readFile() throws Exception {
+    /**
+     * Reads all Lines of the HOSTS file in List
+     * @return List of strings
+     * @throws Exception This exception is thrown when file is not readable or user doesn't have permission to read it
+     */
+    private List<String> readFile() throws Exception {
         ArrayList<String> lines = new ArrayList<>(20);
         if(!file.canRead()) {
             throw new Exception("File is not readable, try running it as Administrator/Root");
@@ -145,11 +191,11 @@ public class Host {
         reader.close();
         fileReader.close();
         lines.trimToSize();
-        return (String[])lines.toArray();
+        return lines;
     }
 
     /**
-     * Reading the hosts file into Map
+     * Reading the hosts file into Map of String (Domain name) as key and InetAddress as Ip address
      * @return Map
      */
     public static Map<String,InetAddress> read(){
@@ -169,7 +215,7 @@ public class Host {
             try {
                 map.put(matcher.group(3), InetAddress.getByAddress(bytes));
             } catch (UnknownHostException e) {
-                e.printStackTrace();
+                System.out.println(e.getMessage());
             }
         }
         return map;
@@ -177,7 +223,7 @@ public class Host {
 
     /**
      * Rewriting Hosts file after update or delete
-     *
+     * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     private void rewrite() throws Exception {
         StringBuilder builder = new StringBuilder();
@@ -190,6 +236,7 @@ public class Host {
                 builder.append(line);
             }
         }
+        //Checks if the file is writable
         if(!file.canWrite())  {
             throw new Exception("File is not writable");
         }
@@ -198,21 +245,27 @@ public class Host {
             writer.write(builder.toString());
             writer.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
     /**
      * Updates existing host
-     *
+     * @param newHost new Host to override the existing one
+     * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     public void update(Host newHost) throws Exception {
+        //Rewrites the whole HOSTS file
         rewrite();
+        //Adds new host at the bottom
         newHost.write();
     }
 
     /**
-     * Deletes existing host
+     * Deletes one existing host
+     * by the given parameters in the constructor or through the get method
      *
+     * Public extension method to the private rewrite()
+     * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     public void delete() throws Exception {
         rewrite();
