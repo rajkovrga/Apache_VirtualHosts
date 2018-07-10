@@ -1,6 +1,7 @@
 package com.virtualhosts;
 
 
+
 import java.io.File;
 import java.net.InetAddress;
 
@@ -17,8 +18,16 @@ public class Main {
         Boolean rewriteEngine = false;
         setDefaults(type);
 
-        Host host = new Host(new byte[] { 127,0,0,1},"dusan.com");
-        host.write();
+//        Host host = new Host(new byte[] { 127,0,0,1},"dusan.com");
+//        try {
+////            var host = Host.get("dusan.com");
+//            host.delete();
+////            host.update(new Host("gimbc.com"));
+//        }catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+        //host.update(new Host("dev.com"));
+//        System.out.println(host.getAddress().toString());
 //        var read = Host.read();
 //        Host host = null;
 //        try {

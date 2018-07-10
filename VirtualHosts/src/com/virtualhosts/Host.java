@@ -38,6 +38,21 @@ public class Host {
     private static List<String> content;
 
     /**
+     * Cleans the ip address
+     * eg. localhost/127.0.0.1 will be just 127.0.0.1
+     * @param ipAddress IpAddress to be cleaned
+     * @return Cleaned ip address
+     */
+    private String cleanIpAddress(String ipAddress) {
+        Pattern replace = Pattern.compile("((\\w+)?/)(.*)");
+        Matcher matcher = replace.matcher(ipAddress);
+
+        if(matcher.matches()) {
+            ipAddress = ipAddress.replaceFirst("((\\w+)?/)", "");
+        }
+        return ipAddress;
+    }
+    /**
      * Primary constructor
      * @param address Reference address
      * @param serverName Domain name
@@ -83,6 +98,37 @@ public class Host {
     }
 
     /**
+     * Return ip address of the host
+     * @return Ip address
+     */
+    public InetAddress getAddress() {
+        return this.address;
+    }
+
+    /**
+     * Gets the domain name of the host
+     * @return Domain name
+     */
+    public String getServerName() {
+        return serverName;
+    }
+
+    /**
+     * Returns the list of all lines in the system hosts file
+     * @return List of lines
+     */
+    public static List<String> getContent() {
+        if(content == null) {
+            try {
+                content = readFile();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        return content;
+    }
+
+    /**
      * Getter for this.file
      * @return Hosts file
      */
@@ -98,7 +144,6 @@ public class Host {
     public boolean hostExits(){
         return read().containsKey(this.serverName) && read().containsValue(this.address);
     }
-
 
     /**
      * Gets the list of hosts,
@@ -119,31 +164,36 @@ public class Host {
         return null;
     }
 
-
-
     /**
-     * Writes to system hosts file
-     * @throws Exception This exception is thrown when user doesn't have permission to write to file
+     * Writes to hosts file
+     * @throws Exception Throws exception if host already exits or file is not writable
      */
     public void write() throws Exception {
-        try {
+        if(hostExits()){
+            throw new Exception("Host already exists");
+        }
+        write(this.toString(), true);
+        System.out.println("You host added successfully");
+    }
 
-            //Checks if the hosts already exits
-            if(hostExits()){
-                System.out.println("Host already exists");
-                return;
-            }
+    /**
+     * Private method that writes to system hosts file
+     * @param output Actual string that will be dumped to the system Hosts file
+     * @param append Deferments if the first parameter will be appended to the file or file will be completely rewritten
+     * @throws Exception This exception is thrown when user doesn't have permission to write to file
+     */
+    private void write(String output, boolean append) throws Exception {
+        try {
             //Check if the file is writable
             if(!file.canWrite()) {
                 throw new Exception("File is not writable, try running as Administrator/Root");
             }
+            String address = cleanIpAddress(this.address.toString());
             //Writes to hosts file
-            FileWriter writer = new FileWriter(file);
-            writer.append("\n")
-                    .append(this.address.toString())
-                    .append("\t")
-                    .append(this.serverName);
+            FileWriter writer = new FileWriter(file, append);
+            writer.append(output);
             writer.close();
+//            System.out.println("You host added successfully");
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -175,7 +225,7 @@ public class Host {
      * @return List of strings
      * @throws Exception This exception is thrown when file is not readable or user doesn't have permission to read it
      */
-    private List<String> readFile() throws Exception {
+    private static List<String> readFile() throws Exception {
         ArrayList<String> lines = new ArrayList<>(20);
         if(!file.canRead()) {
             throw new Exception("File is not readable, try running it as Administrator/Root");
@@ -198,13 +248,13 @@ public class Host {
      * Reading the hosts file into Map of String (Domain name) as key and InetAddress as Ip address
      * @return Map
      */
-    public static Map<String,InetAddress> read(){
+    public static Map<String,InetAddress> read() {
         var map = new HashMap<String, InetAddress>();
         String pattern =  "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t+|\\s*)(.*)\\n?";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher;
         byte[] bytes = new byte[4];
-        for(var line : content) {
+        for(var line : getContent()) {
             matcher = regex.matcher(line);
             if(!matcher.matches()) continue;
             var ipStr = matcher.group(1);
@@ -226,28 +276,25 @@ public class Host {
      * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     private void rewrite() throws Exception {
+        if(!hostExits()) {
+            throw new Exception("Host doesn't exist");
+        }
         StringBuilder builder = new StringBuilder();
-        String address = this.address.toString().replace("/", "");
         Matcher matcher;
-        Pattern regex = Pattern.compile("\\n?" + address + "[\\t|\\s]+" + this.serverName + "\\n?");
-        for(var line : content) {
+        Pattern regex = Pattern.compile("\\n?" + cleanIpAddress(this.address.toString()) + "[\\t|\\s]+" + this.serverName + "\\n?");
+        for(var line : getContent()) {
             matcher = regex.matcher(line);
             if(!matcher.matches())  {
                 builder.append(line);
             }
         }
-        //Checks if the file is writable
-        if(!file.canWrite())  {
-            throw new Exception("File is not writable");
-        }
         try {
-            FileWriter writer = new FileWriter(file);
-            writer.write(builder.toString());
-            writer.close();
+           write(builder.toString(), false);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
     }
+
     /**
      * Updates existing host
      * @param newHost new Host to override the existing one
@@ -258,6 +305,9 @@ public class Host {
         rewrite();
         //Adds new host at the bottom
         newHost.write();
+        this.address = newHost.address;
+        this.serverName = newHost.serverName;
+        System.out.println("Host updated successfully");
     }
 
     /**
@@ -269,13 +319,15 @@ public class Host {
      */
     public void delete() throws Exception {
         rewrite();
+        System.out.println("Host deleted successfully");
     }
+
     /**
      * Overriding to string method for better debugging
      * @return String
      */
     @Override
     public String toString() {
-        return "DomainName: " + this.serverName + "\n" + "Address: " + this.address.toString();
+        return "\r\n" + this.cleanIpAddress(this.address.toString()) + "\t" + this.serverName;
     }
 }

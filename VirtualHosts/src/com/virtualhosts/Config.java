@@ -29,6 +29,7 @@ public class Config {
     public static String HOSTS = "/etc/hosts";
 
     private Config() {}
+
     /**
      * Gets the OS version
      * @return OsType Enum

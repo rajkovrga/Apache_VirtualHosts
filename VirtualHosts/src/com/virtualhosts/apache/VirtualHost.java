@@ -108,6 +108,7 @@ public class VirtualHost {
     public VirtualHost(String serverName) {
         this(serverName, null, null, null, null, false);
     }
+
     public VirtualHost(String serverName, byte[] address) throws UnknownHostException {
         this(serverName, InetAddress.getByAddress(address), null, null, null,false);
     }
@@ -171,26 +172,21 @@ public class VirtualHost {
      */
     public void createNewVirtualHost() {
         try {
-            if(Config.getOs() == OsType.Linux)
-                if(apacheExits()) {
+            if (Config.getOs() == OsType.Linux)
+                if (apacheExits()) {
                     throw new NotDirectoryException("Apache is not installed");
                 }
             addConf();
             try {
                 this.hosts.write();
             } catch (Exception e) {
-                e.printStackTrace();
-                e.getMessage();
+                System.out.println(e.getMessage());
             }
             createDirectoryForVirtualHost();
-        } catch (FileAlreadyExistsException e) {
-            e.getMessage();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
-
-
 
     /**
      * Checks for the apache folder, to determent if the apache is installed or not
@@ -204,6 +200,9 @@ public class VirtualHost {
     //Implement apache virtual host syntax
     @Override
     public String toString() {
-        return "";
+
+        StringBuilder builder = new StringBuilder();
+
+        return builder.toString();
     }
 }
