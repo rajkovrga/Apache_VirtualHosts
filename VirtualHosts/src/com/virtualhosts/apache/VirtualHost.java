@@ -17,48 +17,58 @@ import java.nio.file.NotDirectoryException;
  * @version 1.0
  */
 public class VirtualHost {
+
     /**
      * Folder name
      */
     private String hostName;
+
     /**
      * Domain
      *
      * eg. example.com
      */
     private String serverName;
+
     /**
      * Ip Address of the website
      *
      * eg. 127.0.0.1
      */
     private InetAddress address;
+
     /**
      * Reference to the hosts file for further manipulation
      */
     private Host hosts;
+
     /**
      * Alias of the website
      *
      * eg. www.example.com
      */
     private String alias;
+
     /**
      * Folder from where site is served
      *
      *  eg. /path/to/the/folder/public
      */
     private String publicFolder = "";
+
     /**
-     *
+     * Folder where website will be stored
+     *  eg. /var/www/example/
      */
     private String documentRoot;
+
     /**
      * Apache Rewrite Engine
      *
      * default - false
      */
     private Boolean rewriteEngine = false;
+
     /**
      * Current operating system
      */
@@ -78,19 +88,20 @@ public class VirtualHost {
                        String serverName,
                        @Nullable InetAddress address,
                        @Nullable String publicFolder,
-                       @Nullable String alias,
                        @Nullable String documentRoot,
+                       @Nullable String alias,
                        @Nullable Boolean rewriteEngine
     ) {
         this.hostName = serverName.split("\\.")[0];
         this.alias = alias;
+
         if(address == null) {
             this.address = InetAddress.getLoopbackAddress();
         } else {
             this.address = address;
         }
         this.serverName = serverName;
-        this.hosts = new Host(address, serverName);
+
         if(publicFolder != null) {
             this.publicFolder = publicFolder;
         }
@@ -102,6 +113,7 @@ public class VirtualHost {
         if(rewriteEngine != null) {
             this.rewriteEngine = rewriteEngine;
         }
+        this.hosts = new Host(this.address, this.serverName);
     }
 
 
@@ -112,17 +124,69 @@ public class VirtualHost {
     public VirtualHost(String serverName, byte[] address) throws UnknownHostException {
         this(serverName, InetAddress.getByAddress(address), null, null, null,false);
     }
+
     public VirtualHost(String serverName, byte[] address, String publicFolder) throws UnknownHostException {
         this(serverName, InetAddress.getByAddress(address), publicFolder, null, null,false);
     }
+
     public VirtualHost(String serverName, byte[] address, String publicFolder, String documentRoot) throws UnknownHostException {
         this(serverName, InetAddress.getByAddress(address), publicFolder, null, documentRoot,false);
     }
 
     /**
+     * Public method for uniting all other methods
+     */
+    public void createNewVirtualHost() {
+        try {
+            if (Config.getOs() == OsType.Linux)
+                if (apacheExits()) {
+                    throw new NotDirectoryException("Apache is not installed");
+                }
+            addConf();
+            createDirectoryForVirtualHost();
+            try {
+                this.hosts.write();
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    //TODO - Create update and delete methods
+
+    /**
+     * Checks for the apache folder, to determent if the apache is installed or not
+     * This method works only in LINUX !!!
+     * @return boolean
+     */
+    private boolean apacheExits() {
+        return !new File("/etc/apache2").isDirectory();
+    }
+
+    /**
+     * Created the directory for the given virtual host
+     * @throws FileAlreadyExistsException Throws an error if the folder exits
+     */
+    private void createDirectoryForVirtualHost() throws FileAlreadyExistsException {
+        File site = new File(Config.SITES.concat(hostName));
+        if(site.isDirectory()) {
+            throw new FileAlreadyExistsException("Directory already exits");
+        }
+        if(site.mkdir()) {
+            System.out.println("Directory created");
+        } else {
+            System.out.println("Error accured while creating directory");
+        }
+    }
+
+    /**
      * Adds the configuration to apache for the given parameters
-     * @throws FileAlreadyExistsException Throws an error if the config file exits
+     * @throws FileAlreadyExistsException Throws an error if the config file exit
      * @throws IOException If it fails to create new config file, mainly because of root access
+     * @throws NullPointerException This exception is thrown when file (on windows default apache config file | on linux if new apache host couldn't be created
+     *
      */
     private void addConf() throws  FileAlreadyExistsException, IOException, NullPointerException {
         File newSite = null;
@@ -151,58 +215,31 @@ public class VirtualHost {
         writer.close();
     }
 
-    /**
-     * Created the directory for the given virtual host
-     * @throws FileAlreadyExistsException Throws an error if the folder exits
-     */
-    private void createDirectoryForVirtualHost() throws FileAlreadyExistsException {
-        File site = new File(Config.SITES.concat(hostName));
-        if(site.isDirectory()) {
-            throw new FileAlreadyExistsException("Directory already exits");
-        }
-        if(site.mkdir()) {
-            System.out.println("Directory created");
-        } else {
-            System.out.println("Error accured while creating directory");
-        }
-    }
-
-    /**
-     * Public method for uniting all other methods
-     */
-    public void createNewVirtualHost() {
-        try {
-            if (Config.getOs() == OsType.Linux)
-                if (apacheExits()) {
-                    throw new NotDirectoryException("Apache is not installed");
-                }
-            addConf();
-            try {
-                this.hosts.write();
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
-            createDirectoryForVirtualHost();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * Checks for the apache folder, to determent if the apache is installed or not
-     * This method works only in LINUX !!!
-     * @return boolean
-     */
-    private boolean apacheExits() {
-        return !new File("/etc/apache2").isDirectory();
-    }
-
-    //Implement apache virtual host syntax
     @Override
     public String toString() {
 
         StringBuilder builder = new StringBuilder();
-
+        builder.append("\r\n<VirtualHost ").append(this.hosts.cleanIpAddress(this.address.toString())).append(":80>");
+        builder.append("\r\n\tServerName ").append(serverName);
+        File f = new File(documentRoot);
+        if(!f.isAbsolute()) {
+            documentRoot = Config.SITES + documentRoot;
+        }
+        if(publicFolder.equals("")) {
+            if(Config.getOs() == OsType.Windows)
+            builder.append("\r\n\tDocumentRoot \"").append(documentRoot).append('"');
+            else
+                builder.append("\r\n\tDocumentRoot ").append(documentRoot);
+        } else {
+            builder.append("\r\n\tDocumentRoot ").append(documentRoot).append(Config.getOs() == OsType.Linux ? "/" : "\\").append(publicFolder);
+        }
+        if(rewriteEngine) {
+            builder.append("\r\n\tRewriteEngine on");
+        }
+        if(alias != null) {
+            builder.append("\r\n\tServerAlias ").append(alias);
+        }
+        builder.append("\r\n</VirtualHost>");
         return builder.toString();
     }
 }

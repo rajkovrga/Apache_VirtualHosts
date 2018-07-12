@@ -2,7 +2,6 @@
 <project version="4">
   <component name="AnalysisUIOptions">
     <option name="ANALYZE_TEST_SOURCES" value="false" />
-    <option name="SCOPE_TYPE" value="8" />
     <option name="CUSTOM_SCOPE_NAME" value="ExceptMain" />
   </component>
   <component name="ChangeListManager">
@@ -22,31 +21,85 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+            <state relative-caret-position="120">
+              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Host.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="900">
+              <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Config#0" />
+                <element signature="docComment;field#SITESAVAILABLE#0;class#Config#0" />
+                <element signature="docComment;field#SITES#0;class#Config#0" />
+                <element signature="docComment;field#HOSTS#0;class#Config#0" />
+                <element signature="docComment;method#getOs#0;class#Config#0" />
+                <element signature="docComment;method#createConfigFile#0;class#Config#0" />
+                <element signature="docComment;method#writeConfig#0;class#Config#0" />
+                <element signature="docComment;method#modifyConfig#0;class#Config#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VirtualHost.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1640">
+              <caret line="245" selection-start-line="245" selection-end-line="245" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#VirtualHost#0" />
+                <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+                <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+                <element signature="docComment;field#address#0;class#VirtualHost#0" />
+                <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+                <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+                <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+                <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+                <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+                <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+                <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+                <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+                <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+                <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+                <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+                <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+                <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+                <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+                <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+                <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+                <element signature="method#addConf#0;class#VirtualHost#0" />
+                <element signature="method#toString#0;class#VirtualHost#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Host.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            <state relative-caret-position="800">
+              <caret line="69" selection-start-line="69" selection-end-line="69" />
               <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#Host#0" />
                 <element signature="docComment;field#address#0;class#Host#0" />
                 <element signature="docComment;field#serverName#0;class#Host#0" />
                 <element signature="docComment;field#file#0;class#Host#0" />
                 <element signature="docComment;field#content#0;class#Host#0" />
                 <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-                <element signature="method#cleanIpAddress#0;class#Host#0" />
                 <element signature="docComment;method#Host#0;class#Host#0" />
                 <element signature="method#Host#0;class#Host#0" />
                 <element signature="docComment;method#Host#1;class#Host#0" />
@@ -84,29 +137,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
-              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="VirtualHost.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3820">
-              <caret line="204" selection-start-line="204" selection-end-line="204" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2791#2792#0" expanded="true" />
-                <element signature="e#2854#2855#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -127,11 +157,11 @@
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Hosts.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/HostNotFoundException.java" />
-        <option value="$PROJECT_DIR$/src/com/virtualhosts/Config.java" />
-        <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java" />
-        <option value="$PROJECT_DIR$/src/com/virtualhosts/Main.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/OsType.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Host.java" />
+        <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java" />
+        <option value="$PROJECT_DIR$/src/com/virtualhosts/Config.java" />
+        <option value="$PROJECT_DIR$/src/com/virtualhosts/Main.java" />
       </list>
     </option>
   </component>
@@ -153,17 +183,20 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1405" />
-    <option name="height" value="837" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-14" />
+    <option name="y" value="-14" />
+    <option name="width" value="1408" />
+    <option name="height" value="841" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -182,18 +215,23 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
+              <item name="apache" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last.edited.regexp" value="127.0.0.1exaple.com.org" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -202,7 +240,7 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -294,12 +332,15 @@
       <workItem from="1531136693406" duration="1222000" />
       <workItem from="1531145999101" duration="12469000" />
       <workItem from="1531176682117" duration="4869000" />
-      <workItem from="1531181657600" duration="456000" />
+      <workItem from="1531181657600" duration="613000" />
+      <workItem from="1531237204373" duration="7693000" />
+      <workItem from="1531391357062" duration="8346000" />
+      <workItem from="1531431993098" duration="1042000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50406000" />
+    <option name="totallyTimeSpent" value="67644000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,6 +357,7 @@
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3292683" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3292683" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
@@ -327,8 +369,8 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3292683" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18702064" />
-      <window_info anchor="bottom" id="Metrics" weight="0.32885087" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19410029" />
+      <window_info anchor="bottom" id="Statistic" weight="0.32885087" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -337,9 +379,9 @@
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39853302" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.3292683" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Metrics" order="8" weight="0.32885087" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32969153" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -394,11 +436,286 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3640">
+          <caret line="182" column="22" lean-forward="true" selection-start-line="182" selection-start-column="22" selection-end-line="182" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1400">
+          <caret line="70" column="5" lean-forward="true" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Config#0" />
+            <element signature="docComment;field#SITESAVAILABLE#0;class#Config#0" />
+            <element signature="docComment;field#SITES#0;class#Config#0" />
+            <element signature="docComment;field#HOSTS#0;class#Config#0" />
+            <element signature="docComment;method#getOs#0;class#Config#0" />
+            <element signature="docComment;method#createConfigFile#0;class#Config#0" />
+            <element signature="docComment;method#writeConfig#0;class#Config#0" />
+            <element signature="docComment;method#modifyConfig#0;class#Config#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4900">
+          <caret line="245" lean-forward="true" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1380">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
+            <element signature="docComment;field#address#0;class#Host#0" />
+            <element signature="docComment;field#serverName#0;class#Host#0" />
+            <element signature="docComment;field#file#0;class#Host#0" />
+            <element signature="docComment;field#content#0;class#Host#0" />
+            <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
+            <element signature="docComment;method#Host#0;class#Host#0" />
+            <element signature="method#Host#0;class#Host#0" />
+            <element signature="docComment;method#Host#1;class#Host#0" />
+            <element signature="method#Host#1;class#Host#0" />
+            <element signature="docComment;method#Host#2;class#Host#0" />
+            <element signature="method#Host#2;class#Host#0" />
+            <element signature="docComment;method#Host#3;class#Host#0" />
+            <element signature="docComment;method#getAddress#0;class#Host#0" />
+            <element signature="docComment;method#getServerName#0;class#Host#0" />
+            <element signature="docComment;method#getContent#0;class#Host#0" />
+            <element signature="method#getContent#0;class#Host#0" />
+            <element signature="docComment;method#getFile#0;class#Host#0" />
+            <element signature="docComment;method#hostExits#0;class#Host#0" />
+            <element signature="docComment;method#getAllHosts#0;class#Host#0" />
+            <element signature="method#getAllHosts#0;class#Host#0" />
+            <element signature="docComment;method#write#0;class#Host#0" />
+            <element signature="method#write#0;class#Host#0" />
+            <element signature="docComment;method#write#1;class#Host#0" />
+            <element signature="method#write#1;class#Host#0" />
+            <element signature="docComment;method#get#0;class#Host#0" />
+            <element signature="method#get#0;class#Host#0" />
+            <element signature="docComment;method#readFile#0;class#Host#0" />
+            <element signature="method#readFile#0;class#Host#0" />
+            <element signature="docComment;method#read#0;class#Host#0" />
+            <element signature="method#read#0;class#Host#0" />
+            <element signature="docComment;method#rewrite#0;class#Host#0" />
+            <element signature="method#rewrite#0;class#Host#0" />
+            <element signature="docComment;method#update#0;class#Host#0" />
+            <element signature="method#update#0;class#Host#0" />
+            <element signature="docComment;method#delete#0;class#Host#0" />
+            <element signature="method#delete#0;class#Host#0" />
+            <element signature="docComment;method#toString#0;class#Host#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2820">
+          <caret line="141" lean-forward="true" selection-start-line="141" selection-end-line="141" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1300">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Config#0" />
+            <element signature="docComment;field#SITESAVAILABLE#0;class#Config#0" />
+            <element signature="docComment;field#SITES#0;class#Config#0" />
+            <element signature="docComment;field#HOSTS#0;class#Config#0" />
+            <element signature="docComment;method#getOs#0;class#Config#0" />
+            <element signature="docComment;method#createConfigFile#0;class#Config#0" />
+            <element signature="docComment;method#writeConfig#0;class#Config#0" />
+            <element signature="docComment;method#modifyConfig#0;class#Config#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4360">
+          <caret line="218" lean-forward="true" selection-start-line="218" selection-end-line="218" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
+            <element signature="docComment;field#address#0;class#Host#0" />
+            <element signature="docComment;field#serverName#0;class#Host#0" />
+            <element signature="docComment;field#file#0;class#Host#0" />
+            <element signature="docComment;field#content#0;class#Host#0" />
+            <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
+            <element signature="docComment;method#Host#0;class#Host#0" />
+            <element signature="method#Host#0;class#Host#0" />
+            <element signature="docComment;method#Host#1;class#Host#0" />
+            <element signature="method#Host#1;class#Host#0" />
+            <element signature="docComment;method#Host#2;class#Host#0" />
+            <element signature="method#Host#2;class#Host#0" />
+            <element signature="docComment;method#Host#3;class#Host#0" />
+            <element signature="docComment;method#getAddress#0;class#Host#0" />
+            <element signature="docComment;method#getServerName#0;class#Host#0" />
+            <element signature="docComment;method#getContent#0;class#Host#0" />
+            <element signature="method#getContent#0;class#Host#0" />
+            <element signature="docComment;method#getFile#0;class#Host#0" />
+            <element signature="docComment;method#hostExits#0;class#Host#0" />
+            <element signature="docComment;method#getAllHosts#0;class#Host#0" />
+            <element signature="method#getAllHosts#0;class#Host#0" />
+            <element signature="docComment;method#write#0;class#Host#0" />
+            <element signature="method#write#0;class#Host#0" />
+            <element signature="docComment;method#write#1;class#Host#0" />
+            <element signature="method#write#1;class#Host#0" />
+            <element signature="docComment;method#get#0;class#Host#0" />
+            <element signature="method#get#0;class#Host#0" />
+            <element signature="docComment;method#readFile#0;class#Host#0" />
+            <element signature="method#readFile#0;class#Host#0" />
+            <element signature="docComment;method#read#0;class#Host#0" />
+            <element signature="method#read#0;class#Host#0" />
+            <element signature="docComment;method#rewrite#0;class#Host#0" />
+            <element signature="method#rewrite#0;class#Host#0" />
+            <element signature="docComment;method#update#0;class#Host#0" />
+            <element signature="method#update#0;class#Host#0" />
+            <element signature="docComment;method#delete#0;class#Host#0" />
+            <element signature="method#delete#0;class#Host#0" />
+            <element signature="docComment;method#toString#0;class#Host#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Config#0" />
+            <element signature="docComment;field#SITESAVAILABLE#0;class#Config#0" />
+            <element signature="docComment;field#SITES#0;class#Config#0" />
+            <element signature="docComment;field#HOSTS#0;class#Config#0" />
+            <element signature="docComment;method#getOs#0;class#Config#0" />
+            <element signature="docComment;method#createConfigFile#0;class#Config#0" />
+            <element signature="docComment;method#writeConfig#0;class#Config#0" />
+            <element signature="docComment;method#modifyConfig#0;class#Config#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3820">
+          <caret line="204" selection-start-line="204" selection-end-line="204" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -408,12 +725,13 @@
         <state relative-caret-position="3520">
           <caret line="176" column="58" selection-start-line="176" selection-start-column="58" selection-end-line="176" selection-end-column="58" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -463,8 +781,28 @@
           <caret line="204" selection-start-line="204" selection-end-line="204" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
         </state>
       </provider>
@@ -475,7 +813,6 @@
           <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -485,12 +822,13 @@
         <state relative-caret-position="300">
           <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -540,8 +878,28 @@
           <caret line="204" selection-start-line="204" selection-end-line="204" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
         </state>
       </provider>
@@ -552,7 +910,6 @@
           <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -562,12 +919,13 @@
         <state relative-caret-position="3880">
           <caret line="194" column="6" lean-forward="true" selection-start-line="194" selection-start-column="6" selection-end-line="194" selection-end-column="6" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -610,7 +968,6 @@
           <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -620,12 +977,13 @@
         <state relative-caret-position="520">
           <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -668,7 +1026,6 @@
           <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -678,12 +1035,13 @@
         <state relative-caret-position="4416">
           <caret line="184" column="34" selection-start-line="184" selection-start-column="34" selection-end-line="184" selection-end-column="34" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -726,8 +1084,28 @@
           <caret line="31" column="6" lean-forward="true" selection-start-line="31" selection-start-column="6" selection-end-line="31" selection-end-column="6" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
         </state>
       </provider>
@@ -738,7 +1116,6 @@
           <caret line="37" column="21" lean-forward="true" selection-start-line="37" selection-start-column="21" selection-end-line="37" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -749,7 +1126,6 @@
           <caret line="4" column="23" lean-forward="true" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -760,8 +1136,28 @@
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
         </state>
       </provider>
@@ -779,7 +1175,6 @@
           <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
           </folding>
         </state>
       </provider>
@@ -797,8 +1192,28 @@
           <caret line="61" column="83" selection-start-line="61" selection-start-column="83" selection-end-line="61" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
         </state>
       </provider>
@@ -887,25 +1302,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3820">
-          <caret line="204" selection-start-line="204" selection-end-line="204" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2791#2792#0" expanded="true" />
-            <element signature="e#2854#2855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/OsType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -913,28 +1309,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+    <entry file="jar://C:/Program Files/Java/jdk-10.0.1/lib/src.zip!/java.base/java/io/File.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1531181523889" expanded="false" signature="1492:3755" ph="..." />
-          </folding>
+        <state relative-caret-position="404">
+          <caret line="1024" column="5" lean-forward="true" selection-start-line="1024" selection-start-column="5" selection-end-line="1024" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Host.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+        <state relative-caret-position="800">
+          <caret line="69" selection-start-line="69" selection-end-line="69" />
           <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Host#0" />
             <element signature="docComment;field#address#0;class#Host#0" />
             <element signature="docComment;field#serverName#0;class#Host#0" />
             <element signature="docComment;field#file#0;class#Host#0" />
             <element signature="docComment;field#content#0;class#Host#0" />
             <element signature="docComment;method#cleanIpAddress#0;class#Host#0" />
-            <element signature="method#cleanIpAddress#0;class#Host#0" />
             <element signature="docComment;method#Host#0;class#Host#0" />
             <element signature="method#Host#0;class#Host#0" />
             <element signature="docComment;method#Host#1;class#Host#0" />
@@ -967,6 +1360,66 @@
             <element signature="docComment;method#delete#0;class#Host#0" />
             <element signature="method#delete#0;class#Host#0" />
             <element signature="docComment;method#toString#0;class#Host#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1640">
+          <caret line="245" selection-start-line="245" selection-end-line="245" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#VirtualHost#0" />
+            <element signature="docComment;field#hostName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#serverName#0;class#VirtualHost#0" />
+            <element signature="docComment;field#address#0;class#VirtualHost#0" />
+            <element signature="docComment;field#hosts#0;class#VirtualHost#0" />
+            <element signature="docComment;field#alias#0;class#VirtualHost#0" />
+            <element signature="docComment;field#publicFolder#0;class#VirtualHost#0" />
+            <element signature="docComment;field#documentRoot#0;class#VirtualHost#0" />
+            <element signature="docComment;field#rewriteEngine#0;class#VirtualHost#0" />
+            <element signature="docComment;field#Os#0;class#VirtualHost#0" />
+            <element signature="docComment;method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#3;class#VirtualHost#0" />
+            <element signature="method#VirtualHost#4;class#VirtualHost#0" />
+            <element signature="docComment;method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createNewVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#apacheExits#0;class#VirtualHost#0" />
+            <element signature="docComment;method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="method#createDirectoryForVirtualHost#0;class#VirtualHost#0" />
+            <element signature="docComment;method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#addConf#0;class#VirtualHost#0" />
+            <element signature="method#toString#0;class#VirtualHost#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="70" column="5" selection-start-line="70" selection-start-column="5" selection-end-line="70" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#Config#0" />
+            <element signature="docComment;field#SITESAVAILABLE#0;class#Config#0" />
+            <element signature="docComment;field#SITES#0;class#Config#0" />
+            <element signature="docComment;field#HOSTS#0;class#Config#0" />
+            <element signature="docComment;method#getOs#0;class#Config#0" />
+            <element signature="docComment;method#createConfigFile#0;class#Config#0" />
+            <element signature="docComment;method#writeConfig#0;class#Config#0" />
+            <element signature="docComment;method#modifyConfig#0;class#Config#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

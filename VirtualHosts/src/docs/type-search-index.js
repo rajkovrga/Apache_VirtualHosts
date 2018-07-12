@@ -1,1 +1,1 @@
-typeSearchIndex = [{"p":"com.virtualhosts","l":"Config"},{"p":"com.virtualhosts","l":"Host"},{"p":"com.virtualhosts.apache","l":"HostNotFoundException"},{"p":"com.virtualhosts","l":"OsType"},{"p":"com.virtualhosts.apache","l":"VirtualHost"}]
+typeSearchIndex = [{"p":"com.virtualhosts","l":"Config"},{"p":"com.virtualhosts","l":"Host"},{"p":"com.virtualhosts.apache","l":"HostNotFoundException"},{"p":"com.virtualhosts","l":"Main"},{"p":"com.virtualhosts","l":"OsType"},{"p":"com.virtualhosts.apache","l":"VirtualHost"}]

@@ -43,7 +43,7 @@ public class Host {
      * @param ipAddress IpAddress to be cleaned
      * @return Cleaned ip address
      */
-    private String cleanIpAddress(String ipAddress) {
+    public String cleanIpAddress(String ipAddress) {
         Pattern replace = Pattern.compile("((\\w+)?/)(.*)");
         Matcher matcher = replace.matcher(ipAddress);
 
@@ -52,6 +52,7 @@ public class Host {
         }
         return ipAddress;
     }
+
     /**
      * Primary constructor
      * @param address Reference address
@@ -141,7 +142,7 @@ public class Host {
      *
      * @return returns whether the host exits or not
      */
-    public boolean hostExits(){
+    private boolean hostExits(){
         return read().containsKey(this.serverName) && read().containsValue(this.address);
     }
 
