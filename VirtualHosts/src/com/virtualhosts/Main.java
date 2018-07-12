@@ -91,18 +91,14 @@ public class Main {
             return;
         }
 
-        switch (commands[0]) {
-            case "virtual-host":
-                virtualHost = new VirtualHost(serverName, address, documentRoot, publicFolder, alias, rewriteEngine);
-                break;
-        }
 
         Host host;
         switch (commands[1]) {
             case "create":
-                if (virtualHost != null) {
+                if (commands[0].equals("virtual-host")) {
+                    virtualHost = new VirtualHost(serverName, address, documentRoot, publicFolder, alias, rewriteEngine);
                     virtualHost.createNewVirtualHost();
-                } else {
+                } else if (commands[0].equals("host")) {
                     host = new Host(address, serverName);
                     try {
                         host.write();
@@ -113,15 +109,21 @@ public class Main {
                 }
                 break;
             case "update":
-                if (virtualHost != null) {
-                    System.out.println("This method is not implemented yet");
+                if (get == null) {
+                    System.out.println("you must provide us with --get parameter");
                     return;
-                } else {
+                }
+                if (commands[0].equals("virtual-host")) {
+                    virtualHost = VirtualHost.get(get);
+                    if (virtualHost != null) {
+                        System.out.println("This method is not implemented yet");
+                        virtualHost.updateVirtualHost(new VirtualHost(serverName, address, publicFolder, documentRoot, alias, rewriteEngine));
+                        return;
+                    } else {
+                        System.out.println("virtual host doesn't exist");
+                    }
+                } else if (commands[0].equals("host")) {
                     try {
-                        if (get == null) {
-                            System.out.println("you must provide us with --get parameter");
-                            return;
-                        }
                         host = Host.get(get);
                         host.update(new Host(address, serverName));
                     } catch (HostNotFoundException | Exception e) {
@@ -131,15 +133,23 @@ public class Main {
                 }
                 break;
             case "delete":
-                if (virtualHost != null) {
-                    System.out.println("This method is not implemented yet");
+                if (get == null) {
+                    System.out.println("you must provide us with --get parameter");
                     return;
-                } else {
+                }
+                if (commands[0].equals("virtual-host")) {
+                    virtualHost = VirtualHost.get(get);
+                    if (virtualHost != null) {
+                        System.out.println("This method is not implemented yet");
+                        virtualHost.deleteVirtualHost();
+                        return;
+                    }
+                    else {
+                        System.out.println("Virtual host doesn't exist");
+                    }
+                } else if (commands[0].equals("host")) {
                     try {
-                        if (get == null) {
-                            System.out.println("you must provide us with --get parameter");
-                            return;
-                        }
+
                         host = Host.get(get);
                         host.delete();
                     } catch (HostNotFoundException | Exception e) {
@@ -150,7 +160,6 @@ public class Main {
                 break;
             default:
                 System.out.println("This command doesn't exist");
-                break;
         }
     }
 
