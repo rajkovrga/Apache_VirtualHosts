@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"com.virtualhosts"},{"l":"com.virtualhosts.apache"}]
