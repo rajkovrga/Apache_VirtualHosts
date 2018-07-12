@@ -217,8 +217,6 @@ public class Main {
                     break;
                 case "--get":
                     get = args[i + 1];
-                default:
-                    throw new Exception("This parameter doesn't exist");
 
             }
         if ((Config.SITESAVAILABLE.equals("/etc/apache2/sites-available/") || Config.SITES.equals("/var/www")) && type == OsType.Windows) {
