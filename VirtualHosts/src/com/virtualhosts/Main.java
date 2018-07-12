@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 
 /**
  * Main class - here all magic happens
+ *
  * @author Dusan Malusev
  * @version 1.0
  */
@@ -21,7 +22,7 @@ public class Main {
      */
     private static OsType type = Config.getOs();
 
-     /**
+    /**
      * Represents Apache virtual host
      */
     private static VirtualHost virtualHost;
@@ -30,7 +31,6 @@ public class Main {
      * Commands passed to the application
      * [0] - virtual-host (manipulating with apache virtual hosts) | host (modifies system hosts file)
      * [1] - create | update | delete
-     *
      */
     private static String[] commands = new String[2];
 
@@ -71,6 +71,7 @@ public class Main {
 
     /**
      * Entry point
+     *
      * @param args Argument passed through the console
      */
     public static void main(String[] args) {
@@ -117,7 +118,7 @@ public class Main {
                     return;
                 } else {
                     try {
-                        if(get == null) {
+                        if (get == null) {
                             System.out.println("you must provide us with --get parameter");
                             return;
                         }
@@ -135,7 +136,7 @@ public class Main {
                     return;
                 } else {
                     try {
-                        if(get == null) {
+                        if (get == null) {
                             System.out.println("you must provide us with --get parameter");
                             return;
                         }
@@ -225,7 +226,6 @@ public class Main {
         return (commands[0].equals("virtual-host") || commands[0].equals("host")) &&
                 (commands[1].equals("create") || commands[1].equals("update") || commands[1].equals("delete"));
     }
-
 
     /**
      * Sets the default parameters for the different OSes

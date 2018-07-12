@@ -13,6 +13,7 @@ import java.nio.file.NotDirectoryException;
 
 /**
  * Class for manipulating Apache VirtualHosts
+ *
  * @author Dusan Malusev
  * @version 1.0
  */
@@ -25,14 +26,14 @@ public class VirtualHost {
 
     /**
      * Domain
-     *
+     * <p>
      * eg. example.com
      */
     private String serverName;
 
     /**
      * Ip Address of the website
-     *
+     * <p>
      * eg. 127.0.0.1
      */
     private InetAddress address;
@@ -44,27 +45,27 @@ public class VirtualHost {
 
     /**
      * Alias of the website
-     *
+     * <p>
      * eg. www.example.com
      */
     private String alias;
 
     /**
      * Folder from where site is served
-     *
-     *  eg. /path/to/the/folder/public
+     * <p>
+     * eg. /path/to/the/folder/public
      */
     private String publicFolder = "";
 
     /**
      * Folder where website will be stored
-     *  eg. /var/www/example/
+     * eg. /var/www/example/
      */
     private String documentRoot;
 
     /**
      * Apache Rewrite Engine
-     *
+     * <p>
      * default - false
      */
     private Boolean rewriteEngine = false;
@@ -74,35 +75,28 @@ public class VirtualHost {
      */
     private OsType Os = Config.getOs();
 
-
     /**
      * Default constructor
-     * @param serverName Domain name
-     * @param address Ip Address
-     * @param publicFolder Public folder from where the content will be served
-     * @param alias Alias for the web-site - usually www.example.com
-     * @param documentRoot Document root
+     *
+     * @param serverName    Domain name
+     * @param address       Ip Address
+     * @param publicFolder  Public folder from where the content will be served
+     * @param alias         Alias for the web-site - usually www.example.com
+     * @param documentRoot  Document root
      * @param rewriteEngine Initially set RewriteEngine off -Default false
      */
-    public VirtualHost(
-                       String serverName,
-                       @Nullable InetAddress address,
-                       @Nullable String publicFolder,
-                       @Nullable String documentRoot,
-                       @Nullable String alias,
-                       @Nullable Boolean rewriteEngine
-    ) {
+    public VirtualHost(String serverName, @Nullable InetAddress address, @Nullable String publicFolder, @Nullable String documentRoot, @Nullable String alias, @Nullable Boolean rewriteEngine) {
         this.hostName = serverName.split("\\.")[0];
         this.alias = alias;
 
-        if(address == null) {
+        if (address == null) {
             this.address = InetAddress.getLoopbackAddress();
         } else {
             this.address = address;
         }
         this.serverName = serverName;
 
-        if(publicFolder != null) {
+        if (publicFolder != null) {
             this.publicFolder = publicFolder;
         }
         if (documentRoot != null) {
@@ -110,27 +104,26 @@ public class VirtualHost {
         } else {
             this.documentRoot = Config.SITES + this.hostName;
         }
-        if(rewriteEngine != null) {
+        if (rewriteEngine != null) {
             this.rewriteEngine = rewriteEngine;
         }
         this.hosts = new Host(this.address, this.serverName);
     }
-
 
     public VirtualHost(String serverName) {
         this(serverName, null, null, null, null, false);
     }
 
     public VirtualHost(String serverName, byte[] address) throws UnknownHostException {
-        this(serverName, InetAddress.getByAddress(address), null, null, null,false);
+        this(serverName, InetAddress.getByAddress(address), null, null, null, false);
     }
 
     public VirtualHost(String serverName, byte[] address, String publicFolder) throws UnknownHostException {
-        this(serverName, InetAddress.getByAddress(address), publicFolder, null, null,false);
+        this(serverName, InetAddress.getByAddress(address), publicFolder, null, null, false);
     }
 
     public VirtualHost(String serverName, byte[] address, String publicFolder, String documentRoot) throws UnknownHostException {
-        this(serverName, InetAddress.getByAddress(address), publicFolder, null, documentRoot,false);
+        this(serverName, InetAddress.getByAddress(address), publicFolder, null, documentRoot, false);
     }
 
     /**
@@ -157,8 +150,28 @@ public class VirtualHost {
     //TODO - Create update and delete methods
 
     /**
+     *  Gets the existing virtual host
+     * @return an Existing virtual host
+     */
+    public static VirtualHost get(String serverName) {
+        return null;
+    }
+
+    /**
+     * Deletes an existing virtual host
+     */
+    public void deleteVirtualHost() { }
+
+    /**
+     * Updates an existing virtual host
+     * @param newHost New host that will replace the old one
+     */
+    public void updateVirtualHost(VirtualHost newHost) { }
+
+    /**
      * Checks for the apache folder, to determent if the apache is installed or not
      * This method works only in LINUX !!!
+     *
      * @return boolean
      */
     private boolean apacheExits() {
@@ -167,14 +180,15 @@ public class VirtualHost {
 
     /**
      * Created the directory for the given virtual host
+     *
      * @throws FileAlreadyExistsException Throws an error if the folder exits
      */
     private void createDirectoryForVirtualHost() throws FileAlreadyExistsException {
         File site = new File(Config.SITES.concat(hostName));
-        if(site.isDirectory()) {
+        if (site.isDirectory()) {
             throw new FileAlreadyExistsException("Directory already exits");
         }
-        if(site.mkdir()) {
+        if (site.mkdir()) {
             System.out.println("Directory created");
         } else {
             System.out.println("Error accured while creating directory");
@@ -183,15 +197,15 @@ public class VirtualHost {
 
     /**
      * Adds the configuration to apache for the given parameters
-     * @throws FileAlreadyExistsException Throws an error if the config file exit
-     * @throws IOException If it fails to create new config file, mainly because of root access
-     * @throws NullPointerException This exception is thrown when file (on windows default apache config file | on linux if new apache host couldn't be created
      *
+     * @throws FileAlreadyExistsException Throws an error if the config file exit
+     * @throws IOException                If it fails to create new config file, mainly because of root access
+     * @throws NullPointerException       This exception is thrown when file (on windows default apache config file | on linux if new apache host couldn't be created
      */
-    private void addConf() throws  FileAlreadyExistsException, IOException, NullPointerException {
+    private void addConf() throws FileAlreadyExistsException, IOException, NullPointerException {
         File newSite = null;
         FileWriter writer;
-        if(this.Os == OsType.Linux) {
+        if (this.Os == OsType.Linux) {
             newSite = new File(Config.SITESAVAILABLE.concat(this.hostName));
             if (newSite.isFile() || newSite.exists()) {
                 throw new FileAlreadyExistsException("Config file exits");
@@ -202,12 +216,12 @@ public class VirtualHost {
                 System.out.println("Error has accured");
                 return;
             }
-        } else if(this.Os == OsType.Windows) {
+        } else if (this.Os == OsType.Windows) {
             newSite = new File(Config.SITESAVAILABLE);
-            if(!newSite.exists())
+            if (!newSite.exists())
                 throw new FileNotFoundException();
         }
-        if(newSite == null) {
+        if (newSite == null) {
             throw new NullPointerException();
         }
         writer = new FileWriter(newSite);
@@ -222,21 +236,21 @@ public class VirtualHost {
         builder.append("\r\n<VirtualHost ").append(this.hosts.cleanIpAddress(this.address.toString())).append(":80>");
         builder.append("\r\n\tServerName ").append(serverName);
         File f = new File(documentRoot);
-        if(!f.isAbsolute()) {
+        if (!f.isAbsolute()) {
             documentRoot = Config.SITES + documentRoot;
         }
-        if(publicFolder.equals("")) {
-            if(Config.getOs() == OsType.Windows)
-            builder.append("\r\n\tDocumentRoot \"").append(documentRoot).append('"');
+        if (publicFolder.equals("")) {
+            if (Config.getOs() == OsType.Windows)
+                builder.append("\r\n\tDocumentRoot \"").append(documentRoot).append('"');
             else
                 builder.append("\r\n\tDocumentRoot ").append(documentRoot);
         } else {
             builder.append("\r\n\tDocumentRoot ").append(documentRoot).append(Config.getOs() == OsType.Linux ? "/" : "\\").append(publicFolder);
         }
-        if(rewriteEngine) {
+        if (rewriteEngine) {
             builder.append("\r\n\tRewriteEngine on");
         }
-        if(alias != null) {
+        if (alias != null) {
             builder.append("\r\n\tServerAlias ").append(alias);
         }
         builder.append("\r\n</VirtualHost>");

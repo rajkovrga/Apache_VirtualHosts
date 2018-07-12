@@ -7,16 +7,16 @@ import java.io.Serializable;
 /**
  * Class for managing configuration of the program
  * Manages: all paths, OS Version
+ *
  * @author Dusan Malusev
  * @version 1.0
- *
  */
 public class Config implements Serializable {
     /**
      * On Linux systems apache virtual hosts go into separate .conf files into sites-available in apache2 folder
      * Specific to Linux OS
      * /etc/apache2/sites-available/
-    */
+     */
     public static String SITESAVAILABLE = "/etc/apache2/sites-available/";
 
     /**
@@ -33,12 +33,13 @@ public class Config implements Serializable {
      */
     static String HOSTS = "/etc/hosts";
 
-
     //Setting constructor to private, so that nobody could create new object
-    private Config() {}
+    private Config() {
+    }
 
     /**
      * Gets the OS version
+     *
      * @return OsType Enum
      */
     public static OsType getOs() {
@@ -56,9 +57,9 @@ public class Config implements Serializable {
      */
     private static void createConfigFile() throws IOException {
         File config = new File("config.xml");
-        if(!config.exists()) {
+        if (!config.exists()) {
             boolean created = config.createNewFile();
-            if(created) {
+            if (created) {
                 System.out.println("File created successfully");
             } else {
                 System.out.println("An error has accures while creating file");
@@ -66,14 +67,20 @@ public class Config implements Serializable {
         }
     }
 
-    public static boolean isAbsolutePath() {
+    /**
+     * Checks if the SITESAVAILABLE and SITES have absolute paths
+     *
+     * @return boolean
+     */
+    static boolean isAbsolutePath() {
         return new File(SITES).isAbsolute() && new File(SITESAVAILABLE).isAbsolute();
     }
 
-
     // TODO - implement writeConfig
+
     /**
      * Writes the initial configuration
+     *
      * @throws IOException Throws an error if file couldn't be created
      */
     public static void writeConfig() throws IOException {
@@ -83,6 +90,7 @@ public class Config implements Serializable {
     }
 
     // TODO - implement modifyConfig
+
     /**
      * Modifies the existing configuration
      *
@@ -90,7 +98,7 @@ public class Config implements Serializable {
      */
     public static void modifyConfig() throws Exception {
         //Check if config file exits
-        if(!new File("config.xml").exists()) {
+        if (!new File("config.xml").exists()) {
             throw new Exception("Config file doesn't exits, use write method to create new");
         }
 

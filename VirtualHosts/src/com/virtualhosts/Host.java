@@ -12,6 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  * Class for manipulating System Hosts file
+ *
  * @author Dusan Malusev
  * @version 1.0
  */
@@ -28,7 +29,7 @@ public class Host {
     private String serverName;
 
     /**
-     *  System Hosts file
+     * System Hosts file
      */
     private static final File file = new File(Config.HOSTS);
 
@@ -40,6 +41,7 @@ public class Host {
     /**
      * Cleans the ip address
      * eg. localhost/127.0.0.1 will be just 127.0.0.1
+     *
      * @param ipAddress IpAddress to be cleaned
      * @return Cleaned ip address
      */
@@ -47,7 +49,7 @@ public class Host {
         Pattern replace = Pattern.compile("((\\w+)?/)(.*)");
         Matcher matcher = replace.matcher(ipAddress);
 
-        if(matcher.matches()) {
+        if (matcher.matches()) {
             ipAddress = ipAddress.replaceFirst("((\\w+)?/)", "");
         }
         return ipAddress;
@@ -55,7 +57,8 @@ public class Host {
 
     /**
      * Primary constructor
-     * @param address Reference address
+     *
+     * @param address    Reference address
      * @param serverName Domain name
      */
     public Host(InetAddress address, String serverName) {
@@ -71,7 +74,8 @@ public class Host {
     /**
      * Gets ip address by the bytes given
      * Constructor overload
-     * @param address IP address in bytes
+     *
+     * @param address    IP address in bytes
      * @param serverName Domain name
      * @throws UnknownHostException This Exception is thrown when the domain name is not found
      */
@@ -80,8 +84,7 @@ public class Host {
     }
 
     /**
-     *
-     * @param hostname Searches the IP address by the given hostname
+     * @param hostname   Searches the IP address by the given hostname
      * @param serverName Domain name
      * @throws UnknownHostException This Exception is thrown when the domain name is not found
      */
@@ -92,6 +95,7 @@ public class Host {
     /**
      * Overloaded constructor
      * Address = 127.0.0.1
+     *
      * @param serverName Domain name
      */
     public Host(String serverName) {
@@ -100,6 +104,7 @@ public class Host {
 
     /**
      * Return ip address of the host
+     *
      * @return Ip address
      */
     public InetAddress getAddress() {
@@ -108,6 +113,7 @@ public class Host {
 
     /**
      * Gets the domain name of the host
+     *
      * @return Domain name
      */
     public String getServerName() {
@@ -116,10 +122,11 @@ public class Host {
 
     /**
      * Returns the list of all lines in the system hosts file
+     *
      * @return List of lines
      */
     public static List<String> getContent() {
-        if(content == null) {
+        if (content == null) {
             try {
                 content = readFile();
             } catch (Exception e) {
@@ -131,6 +138,7 @@ public class Host {
 
     /**
      * Getter for this.file
+     *
      * @return Hosts file
      */
     public static File getFile() {
@@ -142,20 +150,21 @@ public class Host {
      *
      * @return returns whether the host exits or not
      */
-    private boolean hostExits(){
+    private boolean hostExits() {
         return read().containsKey(this.serverName) && read().containsValue(this.address);
     }
 
     /**
      * Gets the list of hosts,
      * Abstraction for read method
+     *
      * @return List of hosts
      */
     public static List<Host> getAllHosts() {
         try {
             var read = Host.read();
             List<Host> list = new ArrayList<>(5);
-            for(var key : read.keySet()) {
+            for (var key : read.keySet()) {
                 list.add(new Host(read.get(key), key));
             }
             return list;
@@ -167,10 +176,11 @@ public class Host {
 
     /**
      * Writes to hosts file
+     *
      * @throws Exception Throws exception if host already exits or file is not writable
      */
     public void write() throws Exception {
-        if(hostExits()){
+        if (hostExits()) {
             throw new Exception("Host already exists");
         }
         write(this.toString(), true);
@@ -179,6 +189,7 @@ public class Host {
 
     /**
      * Private method that writes to system hosts file
+     *
      * @param output Actual string that will be dumped to the system Hosts file
      * @param append Deferments if the first parameter will be appended to the file or file will be completely rewritten
      * @throws Exception This exception is thrown when user doesn't have permission to write to file
@@ -186,7 +197,7 @@ public class Host {
     private void write(String output, boolean append) throws Exception {
         try {
             //Check if the file is writable
-            if(!file.canWrite()) {
+            if (!file.canWrite()) {
                 throw new Exception("File is not writable, try running as Administrator/Root");
             }
             String address = cleanIpAddress(this.address.toString());
@@ -202,16 +213,16 @@ public class Host {
 
     /**
      * Gets single host from the Hosts file
+     *
      * @param hostName domain
      * @return new instance of Hosts class
      * @throws HostNotFoundException if the hosts isn't found
-     *
      */
     public static Host get(String hostName) throws HostNotFoundException {
         try {
             var read = read();
             //Checks for the hostname
-            if(read.containsKey(hostName)) {
+            if (read.containsKey(hostName)) {
                 var address = read.get(hostName);
                 return new Host(address, hostName);
             }
@@ -223,18 +234,19 @@ public class Host {
 
     /**
      * Reads all Lines of the HOSTS file in List
+     *
      * @return List of strings
      * @throws Exception This exception is thrown when file is not readable or user doesn't have permission to read it
      */
     private static List<String> readFile() throws Exception {
         ArrayList<String> lines = new ArrayList<>(20);
-        if(!file.canRead()) {
+        if (!file.canRead()) {
             throw new Exception("File is not readable, try running it as Administrator/Root");
         }
         String line;
         FileReader fileReader = new FileReader(file);
         BufferedReader reader = new BufferedReader(fileReader);
-        while((line = reader.readLine())!= null) {
+        while ((line = reader.readLine()) != null) {
             lines.add(line);
         }
 
@@ -247,20 +259,21 @@ public class Host {
 
     /**
      * Reading the hosts file into Map of String (Domain name) as key and InetAddress as Ip address
+     *
      * @return Map
      */
-    public static Map<String,InetAddress> read() {
+    public static Map<String, InetAddress> read() {
         var map = new HashMap<String, InetAddress>();
-        String pattern =  "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t+|\\s*)(.*)\\n?";
+        String pattern = "\\n?(\\d{0,3}\\.\\d{0,3}\\.\\d{0,3}\\.\\d{0,3})(\\t+|\\s*)(.*)\\n?";
         Pattern regex = Pattern.compile(pattern);
         Matcher matcher;
         byte[] bytes = new byte[4];
-        for(var line : getContent()) {
+        for (var line : getContent()) {
             matcher = regex.matcher(line);
-            if(!matcher.matches()) continue;
+            if (!matcher.matches()) continue;
             var ipStr = matcher.group(1);
             String[] ip = ipStr.split("\\.");
-            for(int i = 0; i < ip.length; i++) {
+            for (int i = 0; i < ip.length; i++) {
                 bytes[i] = Byte.parseByte(ip[i]);
             }
             try {
@@ -274,23 +287,24 @@ public class Host {
 
     /**
      * Rewriting Hosts file after update or delete
+     *
      * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     private void rewrite() throws Exception {
-        if(!hostExits()) {
+        if (!hostExits()) {
             throw new Exception("Host doesn't exist");
         }
         StringBuilder builder = new StringBuilder();
         Matcher matcher;
         Pattern regex = Pattern.compile("\\n?" + cleanIpAddress(this.address.toString()) + "[\\t|\\s]+" + this.serverName + "\\n?");
-        for(var line : getContent()) {
+        for (var line : getContent()) {
             matcher = regex.matcher(line);
-            if(!matcher.matches())  {
+            if (!matcher.matches()) {
                 builder.append(line);
             }
         }
         try {
-           write(builder.toString(), false);
+            write(builder.toString(), false);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -298,6 +312,7 @@ public class Host {
 
     /**
      * Updates existing host
+     *
      * @param newHost new Host to override the existing one
      * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
@@ -314,8 +329,9 @@ public class Host {
     /**
      * Deletes one existing host
      * by the given parameters in the constructor or through the get method
-     *
+     * <p>
      * Public extension method to the private rewrite()
+     *
      * @throws Exception This exception is thrown when user doesn't have access to read or write to the file
      */
     public void delete() throws Exception {
@@ -325,6 +341,7 @@ public class Host {
 
     /**
      * Overriding to string method for better debugging
+     *
      * @return String
      */
     @Override
