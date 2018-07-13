@@ -92,7 +92,7 @@ public class Main {
         switch (commands[1]) {
             case "create":
                 if (commands[0].equals("virtual-host")) {
-                    virtualHost = new VirtualHost(serverName, address, documentRoot, publicFolder, alias, rewriteEngine);
+                    virtualHost = new VirtualHost(serverName, address, publicFolder ,documentRoot, alias, rewriteEngine);
                     virtualHost.createNewVirtualHost();
                 } else if (commands[0].equals("host")) {
                     host = new Host(address, serverName);

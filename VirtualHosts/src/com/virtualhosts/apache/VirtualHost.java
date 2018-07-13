@@ -5,11 +5,13 @@ import com.virtualhosts.Host;
 import com.virtualhosts.OsType;
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.*;
 import java.io.*;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.nio.file.FileAlreadyExistsException;
 import java.nio.file.NotDirectoryException;
+import java.util.regex.Pattern;
 
 /**
  * Class for manipulating Apache VirtualHosts
@@ -135,8 +137,10 @@ public class VirtualHost {
                 if (apacheExits()) {
                     throw new NotDirectoryException("Apache is not installed");
                 }
-            addConf();
-            createDirectoryForVirtualHost();
+            write();
+            if(! (new File(this.documentRoot).isDirectory())) {
+                createDirectoryForVirtualHost();
+            }
             try {
                 this.hosts.write();
             } catch (Exception e) {
@@ -195,6 +199,39 @@ public class VirtualHost {
         }
     }
 
+
+    /**
+     * Reads the file until it hits the EOF
+     * @param file File to be read
+     * @return Content of the file
+     * @throws IOException This exception is thrown if the file is not found or its not readable
+     */
+    private String readToEnd(File file) throws IOException {
+        StringBuilder sb = new StringBuilder();
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+        String line;
+        while((line = bufferedReader.readLine()) != null) {
+            sb.append(line);
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Check if the host exits
+     * @param host Virtual Host file
+     * @return If the hosts file exits
+     * @throws IOException This exception is thrown if the file is not found or its not readable
+     */
+    private boolean hostExits(File host) throws IOException {
+        String match = this.toString();
+        Pattern p = Pattern.compile(match);
+        String content = readToEnd(host);
+        if(p.matcher(content).matches()) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Adds the configuration to apache for the given parameters
      *
@@ -202,7 +239,7 @@ public class VirtualHost {
      * @throws IOException                If it fails to create new config file, mainly because of root access
      * @throws NullPointerException       This exception is thrown when file (on windows default apache config file | on linux if new apache host couldn't be created
      */
-    private void addConf() throws FileAlreadyExistsException, IOException, NullPointerException {
+    private void write() throws FileAlreadyExistsException, IOException, NullPointerException {
         File newSite = null;
         FileWriter writer;
         if (this.Os == OsType.Linux) {
@@ -224,9 +261,13 @@ public class VirtualHost {
         if (newSite == null) {
             throw new NullPointerException();
         }
-        writer = new FileWriter(newSite);
-        writer.write(this.toString());
-        writer.close();
+        if(!hostExits(newSite)) {
+            writer = new FileWriter(newSite, true);
+            writer.write(this.toString());
+            writer.close();
+        } else {
+            System.out.println("Virtual Hosts already exits");
+        }
     }
 
     @Override
@@ -241,7 +282,7 @@ public class VirtualHost {
         }
         if (publicFolder.equals("")) {
             if (Config.getOs() == OsType.Windows)
-                builder.append("\r\n\tDocumentRoot \"").append(documentRoot).append('"');
+                builder.append("\r\n\tDocumentRoot \"").append(documentRoot).append("\"");
             else
                 builder.append("\r\n\tDocumentRoot ").append(documentRoot);
         } else {
