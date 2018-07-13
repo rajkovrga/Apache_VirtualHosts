@@ -24,13 +24,12 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="218" column="38" selection-start-line="218" selection-start-column="38" selection-end-line="218" selection-end-column="38" />
+            <state relative-caret-position="200">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="docComment;class#Main#0" />
                 <element signature="docComment;field#type#0;class#Main#0" />
-                <element signature="docComment;field#virtualHost#0;class#Main#0" />
                 <element signature="docComment;field#commands#0;class#Main#0" />
                 <element signature="docComment;field#serverName#0;class#Main#0" />
                 <element signature="docComment;field#address#0;class#Main#0" />
@@ -42,6 +41,7 @@
                 <element signature="docComment;method#main#0;class#Main#0" />
                 <element signature="method#main#0;class#Main#0" />
                 <element signature="docComment;method#parseArgs#0;class#Main#0" />
+                <element signature="method#parseArgs#0;class#Main#0" />
                 <element signature="docComment;method#validateCommand#0;class#Main#0" />
                 <element signature="method#validateCommand#0;class#Main#0" />
                 <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -184,7 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Hosts.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/HostNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/OsType.java" />
@@ -192,6 +191,7 @@
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Host.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/apache/VirtualHost.java" />
         <option value="$PROJECT_DIR$/src/com/virtualhosts/Main.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -213,7 +213,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-14" />
     <option name="y" value="-14" />
     <option name="width" value="1408" />
@@ -234,6 +234,24 @@
               <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
               <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="VirtualHosts" type="b2602c69:ProjectViewProjectNode" />
+              <item name="VirtualHosts" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="virtualhosts" type="462c0819:PsiDirectoryNode" />
+              <item name="apache" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -248,9 +266,9 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
   </component>
@@ -347,12 +365,12 @@
       <workItem from="1531181657600" duration="613000" />
       <workItem from="1531237204373" duration="7693000" />
       <workItem from="1531391357062" duration="8346000" />
-      <workItem from="1531431993098" duration="3239000" />
+      <workItem from="1531431993098" duration="6426000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69841000" />
+    <option name="totallyTimeSpent" value="73028000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -365,7 +383,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1753" height="954" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3292683" />
@@ -442,7 +459,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="29" />
+      <option name="time" value="31" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -454,7 +471,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -466,6 +482,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -592,7 +609,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -604,6 +620,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -681,7 +698,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -693,6 +709,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -819,7 +836,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -831,6 +847,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -941,7 +958,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -953,6 +969,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1063,7 +1080,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1075,6 +1091,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1140,7 +1157,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1152,6 +1168,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1217,7 +1234,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1229,6 +1245,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1332,7 +1349,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1344,6 +1360,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1360,7 +1377,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1372,6 +1388,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1433,7 +1450,6 @@
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1445,6 +1461,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />
@@ -1495,13 +1512,6 @@
             <element signature="method#addConf#0;class#VirtualHost#0" />
             <element signature="method#toString#0;class#VirtualHost#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
@@ -1706,15 +1716,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/virtualhosts/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="218" column="38" selection-start-line="218" selection-start-column="38" selection-end-line="218" selection-end-column="38" />
+        <state relative-caret-position="200">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="docComment;class#Main#0" />
             <element signature="docComment;field#type#0;class#Main#0" />
-            <element signature="docComment;field#virtualHost#0;class#Main#0" />
             <element signature="docComment;field#commands#0;class#Main#0" />
             <element signature="docComment;field#serverName#0;class#Main#0" />
             <element signature="docComment;field#address#0;class#Main#0" />
@@ -1726,6 +1742,7 @@
             <element signature="docComment;method#main#0;class#Main#0" />
             <element signature="method#main#0;class#Main#0" />
             <element signature="docComment;method#parseArgs#0;class#Main#0" />
+            <element signature="method#parseArgs#0;class#Main#0" />
             <element signature="docComment;method#validateCommand#0;class#Main#0" />
             <element signature="method#validateCommand#0;class#Main#0" />
             <element signature="docComment;method#setDefaults#0;class#Main#0" />

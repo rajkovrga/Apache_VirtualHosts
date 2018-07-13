@@ -23,11 +23,6 @@ public class Main {
     private static OsType type = Config.getOs();
 
     /**
-     * Represents Apache virtual host
-     */
-    private static VirtualHost virtualHost;
-
-    /**
      * Commands passed to the application
      * [0] - virtual-host (manipulating with apache virtual hosts) | host (modifies system hosts file)
      * [1] - create | update | delete
@@ -93,6 +88,7 @@ public class Main {
 
 
         Host host;
+        VirtualHost virtualHost;
         switch (commands[1]) {
             case "create":
                 if (commands[0].equals("virtual-host")) {
